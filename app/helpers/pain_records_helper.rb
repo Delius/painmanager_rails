@@ -1,0 +1,2 @@
+module PainRecordsHelper
+end

@@ -1,0 +1,33 @@
+<%= form_for(@user_condition) do |f| %>
+  <% if @user_condition.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_condition.errors.count, "error") %> prohibited this user_condition from being saved:</h2>
+
+      <ul>
+      <% @user_condition.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_condition_diagnosed %><br>
+    <%= f.check_box :user_condition_diagnosed %>
+  </div>
+  <div class="field">
+    <%= f.label :user_condition_description %><br>
+    <%= f.text_field :user_condition_description %>
+  </div>
+  <div class="field">
+    <%= f.label :user_condition_category %><br>
+    <%= f.text_field :user_condition_category %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

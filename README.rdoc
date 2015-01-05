@@ -1,7 +1,15 @@
 == README
 Purpose : To Manage chronic pain
 
+to do:
 
+set up devise to register users
+build the user pain record form
+build the User Moods Form
+build the User conditions form
+set up assotiations for models
+progress uml diagram for painmanager
+refactor gemfile
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.

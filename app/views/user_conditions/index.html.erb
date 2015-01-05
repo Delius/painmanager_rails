@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing User Conditions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>User condition diagnosed</th>
+      <th>User condition description</th>
+      <th>User condition category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_conditions.each do |user_condition| %>
+      <tr>
+        <td><%= user_condition.user_id %></td>
+        <td><%= user_condition.user_condition_diagnosed %></td>
+        <td><%= user_condition.user_condition_description %></td>
+        <td><%= user_condition.user_condition_category %></td>
+        <td><%= link_to 'Show', user_condition %></td>
+        <td><%= link_to 'Edit', edit_user_condition_path(user_condition) %></td>
+        <td><%= link_to 'Destroy', user_condition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User condition', new_user_condition_path %>

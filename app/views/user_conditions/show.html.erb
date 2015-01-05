@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_condition.user_id %>
+</p>
+
+<p>
+  <strong>User condition diagnosed:</strong>
+  <%= @user_condition.user_condition_diagnosed %>
+</p>
+
+<p>
+  <strong>User condition description:</strong>
+  <%= @user_condition.user_condition_description %>
+</p>
+
+<p>
+  <strong>User condition category:</strong>
+  <%= @user_condition.user_condition_category %>
+</p>
+
+<%= link_to 'Edit', edit_user_condition_path(@user_condition) %> |
+<%= link_to 'Back', user_conditions_path %>

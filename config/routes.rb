@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  resources :user_conditions
+
+  resources :user_moods
+
+  resources :pain_records
+
+  resources :users
+
+  devise_for :users, controllers: { sessions: "users/sessions" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

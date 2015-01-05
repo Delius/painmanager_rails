@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @pain_record.user_id %>
+</p>
+
+<p>
+  <strong>Pain record description:</strong>
+  <%= @pain_record.pain_record_description %>
+</p>
+
+<p>
+  <strong>Pain record pain level:</strong>
+  <%= @pain_record.pain_record_pain_level %>
+</p>
+
+<p>
+  <strong>Pain record pain placement:</strong>
+  <%= @pain_record.pain_record_pain_placement %>
+</p>
+
+<p>
+  <strong>Pain record pain type:</strong>
+  <%= @pain_record.pain_record_pain_type %>
+</p>
+
+<p>
+  <strong>Pain record pain duration:</strong>
+  <%= @pain_record.pain_record_pain_duration %>
+</p>
+
+<%= link_to 'Edit', edit_pain_record_path(@pain_record) %> |
+<%= link_to 'Back', pain_records_path %>

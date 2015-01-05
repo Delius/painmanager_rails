@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  pain_record_description: MyString
+  pain_record_pain_level: 1
+  pain_record_pain_placement: MyString
+  pain_record_pain_type: MyString
+  pain_record_pain_duration: MyString
+
+two:
+  user_id: 1
+  pain_record_description: MyString
+  pain_record_pain_level: 1
+  pain_record_pain_placement: MyString
+  pain_record_pain_type: MyString
+  pain_record_pain_duration: MyString
