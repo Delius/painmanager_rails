@@ -1,16 +1,15 @@
 <p id="notice"><%= notice %></p>
-
+<div class="center row">
 <h1>Listing Pain Records</h1>
 
 <table>
   <thead>
     <tr>
-      <th>User</th>
-      <th>Pain record description</th>
-      <th>Pain record pain level</th>
-      <th>Pain record pain placement</th>
-      <th>Pain record pain type</th>
-      <th>Pain record pain duration</th>
+      <th>Pain level</th>
+      <th>Pain placement</th>
+      <th>Pain type</th>
+      <th>Pain duration</th>
+      <th>Notes</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,12 +17,12 @@
   <tbody>
     <% @pain_records.each do |pain_record| %>
       <tr>
-        <td><%= pain_record.user_id %></td>
-        <td><%= pain_record.pain_record_description %></td>
+
         <td><%= pain_record.pain_record_pain_level %></td>
         <td><%= pain_record.pain_record_pain_placement %></td>
         <td><%= pain_record.pain_record_pain_type %></td>
         <td><%= pain_record.pain_record_pain_duration %></td>
+        <td><%= pain_record.pain_record_description %></td>
         <% if user_signed_in? %>
         <td><%= link_to 'Show', pain_record %></td>
         <td><%= link_to 'Edit', edit_pain_record_path(pain_record) %></td>
@@ -37,3 +36,4 @@
 <br>
 
 <%= link_to 'New Pain record', new_pain_record_path %>
+</div>

@@ -2,45 +2,172 @@
 <div class="row">
   <div class="large-12 columns">
     <div class="small-10  columns">
-  <%= form_for(@pain_record) do |f| %>
-  <% if @pain_record.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@pain_record.errors.count, "error") %> prohibited this pain_record from being saved:</h2>
+      <%= form_for(@pain_record) do |f| %>
+          <% if @pain_record.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@pain_record.errors.count, "error") %> prohibited this pain_record from being saved:</h2>
 
-      <ul>
-      <% @pain_record.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+                <ul>
+                  <% @pain_record.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+
+
+          <div class="field">
+            <%= f.label  :did_you_have_pain_today? %><br>
+            <%= f.check_box :had_pain_today  %>
+          </div>
+          <div class="field">
+            <%= f.label  :limited_activities,
+                         'Did you avoid or limit any of your activities or cancel plans today
+                          because of pain or changes in your pain?' %><br>
+            <%= f.check_box :limited_activities  %>
+          </div>
+
+          <div class="field">
+            <%= f.label :limited_activities_name,'What activities?' %><br>
+            <%= f.text_field :limited_activities_name %>
+          </div>
+
+          <div class="field">
+            <%= f.label  :all_medicines_taken,
+                         'Did you take all your pain medicine today according to
+                          instructions?' %><br>
+            <%= f.check_box :all_medicines_taken  %>
+          </div>
+
+          <div class="field">
+            <%= f.label  :unrelieved_pain,
+                         'Even though you took your pain medicine for persistent pain on
+                          schedule , were there times during the day that you experienced
+                          unrelieved breakthrough pain? ' %><br>
+            <%= f.check_box :unrelieved_pain  %>
+          </div>
+
+          <div class="field">
+            <%= f.label  :how_often_unrelieved_pain,'How many times did this happen today?' %><br>
+
+            <%= f.select :pain_record_pain_level, [['1','1'],
+                                                    ['2','2'],
+                                                    ['3','3'],
+                                                    ['4','4'],
+                                                    ['5','5'],
+                                                    ['6','6'],
+                                                    ['7','7'],
+                                                    ['8','8'],
+                                                    ['9','9'],
+                                                    ['10','10'],
+                                                    ['more than 10','11']
+
+
+            ]  %>
+          </div>
+
+          <div class="field">
+            <%= f.label  :activity_starting_pain,
+                         'Did any specic activity start your breakthrough pain?' %><br>
+            <%= f.check_box :activity_starting_pain  %>
+          </div>
+
+          <div class="field">
+            <%= f.label :activity_starting_pain_name,'What activity?' %><br>
+            <%= f.text_field :activity_starting_pain_name %>
+          </div>
+
+          <div class="field">
+            <%= f.label  :average_pain_level,'What was your average level of pain today?' %><br>
+
+            <%= f.select :average_pain_level, [['1','1'],
+                                                   ['2','2'],
+                                                   ['3','3'],
+                                                   ['4','4'],
+                                                   ['5','5'],
+                                                   ['6','6'],
+                                                   ['7','7'],
+                                                   ['8','8'],
+                                                   ['9','9'],
+                                                   ['10','10']
+
+
+
+            ]  %>
+          </div>
+
+          <div class="field">
+            <%= f.label  :used_other_actions_to_relieve_pain,
+                         'Other than prescription medicine, did you do anything else today
+                          to relieve the pain? ' %><br>
+            <%= f.check_box :used_other_actions_to_relieve_pain  %>
+          </div>
+
+          <div class="field">
+            <%= f.label :other_actions_to_relieve_pain_name, 'Note any that you used.' %><br>
+            <%= f.text_field :other_actions_to_relieve_pain_name %>
+          </div>
+
+          <div class="field">
+            <%= f.label :pain_placement, 'Where did you have pain?' %><br>
+            <%= f.text_field :pain_placement %>
+          </div>
+
+          <div class="field">
+            <%= f.label :side_effects_after_pain_medicine, 'select any of these common side effects that you’ve noticed
+after taking your pain medicine.' %><br>
+            <%= f.select :side_effects_after_pain_medicine,
+                                                      [
+                                                      ['Drowsiness, sleepiness','1'],
+                                                      ['Nausea, vomiting, upset stomach','2'],
+                                                      ['Constipation ','3'],
+                                                      ['Lack of appetite','4'],
+                                                      ['Other ','5']
+
+
+            ], { :multiple => true, :size => 5 } %>
+          </div>
+
+          <div class="field">
+            <%= f.label  :skipped_medicines,
+                         'Did you skip any of your scheduled pain medicines today? ' %><br>
+            <%= f.check_box :skipped_medicines  %>
+          </div>
+
+          <div class="field">
+            <%= f.label :skipped_medicines_why, 'Why?' %><br>
+            <%= f.text_field :skipped_medicines_why %>
+          </div>
+
+          <div class="field">
+            <%= f.label  :called_doctor_because_of_pain,
+                         'Did you call your doctor’s ofce or clinic between visits because
+                          of pain?  ' %><br>
+            <%= f.check_box :called_doctor_because_of_pain  %>
+          </div>
+ <!-- --------------------------------- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ---------------------------------- -->
+          <div class="field">
+            <%= f.label :how_long_your_pain_lasted? %><br>
+            <%= f.select :pain_record_pain_duration, [['1 hour','2'],
+                                                          ['2 hours','2'],
+                                                          ['3 hours','3'],
+                                                          ['4 hours','4'],
+                                                          ['5 hours','5'],
+                                                          ['half a day','6'],
+                                                          ['a day','7'],
+                                                          ['more than one day','8']
+
+            ] %>
+          </div>
+          <div class="field">
+            <%= f.label :notes %><br>
+            <%= f.text_area :pain_record_description %>
+          </div>
+          <div class="actions">
+            <%= f.submit %>
+          </div>
+
       <% end %>
-      </ul>
     </div>
-  <% end %>
-
-
-  <div class="field">
-    <%= f.label :pain_record_description %><br>
-    <%= f.text_field :pain_record_description %>
   </div>
-  <div class="field">
-    <%= f.label :pain_record_pain_level %><br>
-    <%= f.number_field :pain_record_pain_level %>
-  </div>
-  <div class="field">
-    <%= f.label :pain_record_pain_placement %><br>
-    <%= f.text_field :pain_record_pain_placement %>
-  </div>
-  <div class="field">
-    <%= f.label :pain_record_pain_type %><br>
-    <%= f.text_field :pain_record_pain_type %>
-  </div>
-  <div class="field">
-    <%= f.label :pain_record_pain_duration %><br>
-    <%= f.text_field :pain_record_pain_duration %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-
-<% end %>
-    </div>
 </div>
-    </div>

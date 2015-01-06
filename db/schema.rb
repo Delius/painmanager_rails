@@ -11,17 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105212111) do
+ActiveRecord::Schema.define(version: 20150106213745) do
 
   create_table "pain_records", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "pain_record_description"
-    t.integer  "pain_record_pain_level"
-    t.string   "pain_record_pain_placement"
-    t.string   "pain_record_pain_type"
-    t.string   "pain_record_pain_duration"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.boolean  "limited_activities"
+    t.string   "limited_activities_name"
+    t.boolean  "all_medicines_taken"
+    t.boolean  "unrelieved_pain"
+    t.integer  "how_often_unrelieved_pain"
+    t.boolean  "is_activity_starting_pain"
+    t.string   "activity_starting_pain_name"
+    t.integer  "average_pain_level"
+    t.boolean  "used_other_actions_to_relieve_pain"
+    t.string   "pain_placement"
+    t.string   "side_effects_after_pain_medicine"
+    t.boolean  "skipped_medicines"
+    t.string   "skipped_medicines_why"
+    t.boolean  "called_doctor_because_of_pain" #do tad
+    t.boolean  "slept_through_night"
+    t.integer  "slept_through_night_disrupted_times"
+    t.integer  "slept_hours_night"
+    t.boolean  "satisfied_with_pain_management"
+    t.string   "why_satisfied_or_not"
+    t.integer  "acceptable_pain_level"
+    t.boolean  "had_pain_today"
+    t.string   "other_actions_to_relieve_pain_name"
   end
 
   create_table "user_conditions", force: :cascade do |t|
