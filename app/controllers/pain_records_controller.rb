@@ -1,5 +1,6 @@
 class PainRecordsController < ApplicationController
   before_action :set_pain_record, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:new, :edit, :create,:update, :destroy]
 
   respond_to :html
 

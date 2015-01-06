@@ -1,0 +1,11 @@
+<div>
+  <% if user_signed_in? %>
+      <li><%= link_to current_user.email, current_user %></li>
+     <li> <%= link_to "User profile", current_user %></li>
+      <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+      <li><%= link_to "Logout", destroy_user_session_path , method: :delete %></li>
+  <% else %>
+      <li><%= link_to "Sign in", new_user_session_path %></li>
+      <li class="active"><%= link_to "SignUp", new_user_registration_path %></li>
+  <% end %>
+</div>

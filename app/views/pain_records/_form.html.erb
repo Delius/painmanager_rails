@@ -1,4 +1,8 @@
-<%= form_for(@pain_record) do |f| %>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="small-10  columns">
+  <%= form_for(@pain_record) do |f| %>
   <% if @pain_record.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@pain_record.errors.count, "error") %> prohibited this pain_record from being saved:</h2>
@@ -11,10 +15,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
+
   <div class="field">
     <%= f.label :pain_record_description %><br>
     <%= f.text_field :pain_record_description %>
@@ -38,4 +39,8 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
+    </div>
+</div>
+    </div>

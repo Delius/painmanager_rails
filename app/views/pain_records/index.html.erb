@@ -24,9 +24,11 @@
         <td><%= pain_record.pain_record_pain_placement %></td>
         <td><%= pain_record.pain_record_pain_type %></td>
         <td><%= pain_record.pain_record_pain_duration %></td>
+        <% if user_signed_in? %>
         <td><%= link_to 'Show', pain_record %></td>
         <td><%= link_to 'Edit', edit_pain_record_path(pain_record) %></td>
         <td><%= link_to 'Destroy', pain_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
       </tr>
     <% end %>
   </tbody>
