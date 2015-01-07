@@ -1,0 +1,8 @@
+<li id="painrecord-<%= pain_record.id %>">
+
+  <span class="user"><%= link_to pain_record.user.user_name, pain_record.user %></span>
+  <span class="content">Have you had pain today<%= pain_record.had_pain_today %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(pain_record.created_at) %> ago.
+  </span>
+</li>

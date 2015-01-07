@@ -6,28 +6,111 @@
 </p>
 
 <p>
-  <strong>Pain record description:</strong>
-  <%= @pain_record.pain_record_description %>
+  <strong>Did you have pain today?</strong>
+  <%= @pain_record.had_pain_today %>
 </p>
 
 <p>
-  <strong>Pain record pain level:</strong>
-  <%= @pain_record.pain_record_pain_level %>
+  <strong>Did you avoid or limit any of your activities or cancel plans today
+    because of pain or changes in your pain?</strong>
+  <%= @pain_record.limited_activities %>
 </p>
 
 <p>
-  <strong>Pain record pain placement:</strong>
-  <%= @pain_record.pain_record_pain_placement %>
+  <strong>What activities?</strong>
+  <%= @pain_record.limited_activities_name %>
 </p>
 
 <p>
-  <strong>Pain record pain type:</strong>
-  <%= @pain_record.pain_record_pain_type %>
+  <strong>Did you take all your pain medicine today according to
+    instructions?</strong>
+  <%= @pain_record.all_medicines_taken %>
 </p>
 
 <p>
-  <strong>Pain record pain duration:</strong>
-  <%= @pain_record.pain_record_pain_duration %>
+  <strong>Even though you took your pain medicine for persistent pain on
+    schedule , were there times during the day that you experienced
+    unrelieved breakthrough pain? </strong>
+  <%= @pain_record.unrelieved_pain %>
+</p>
+
+<p>
+  <strong> How many times did this happen today? </strong>
+  <%= @pain_record.how_often_unrelieved_pain %>
+</p>
+<p>
+  <strong>Did any specifc activity start your breakthrough pain? </strong>
+  <%= @pain_record.is_activity_starting_pain %>
+</p>
+<p>
+  <strong>What activities? </strong>
+  <%= @pain_record.activity_starting_pain_name %>
+</p>
+<p>
+  <strong>What was your average level of pain today?  </strong>
+  <%= @pain_record.average_pain_level %>
+</p>
+<p>
+  <strong>Other than prescription medicine, did you do anything else today
+    to relieve the pain? </strong>
+  <%= @pain_record.used_other_actions_to_relieve_pain %>
+</p>
+<p>
+  <strong> Other than prescription medicine, did you do anything else today
+    to relieve the pain?</strong>
+  <%= @pain_record.other_actions_to_relieve_pain_name %>
+</p>
+<p>
+  <strong> Where did you have pain </strong>
+  <%= @pain_record.pain_placement %>
+</p><p>
+  <strong>  side effects that you’ve noticed
+    after taking your pain medicine </strong>
+  <%= @pain_record.side_effects_after_pain_medicine%>
+</p>
+<p>
+  <strong> Did you skip any of your scheduled pain medicines today? </strong>
+  <%= @pain_record.skipped_medicines %>
+</p>
+
+<p>
+  <strong> Reason</strong>
+  <%= @pain_record.skipped_medicines_why%>
+</p>
+
+<p>
+  <strong> Did you call your doctor’s office or clinic between visits because
+    of pain? </strong>
+  <%= @pain_record.called_doctor_because_of_pain %>
+</p>
+<p>
+  <strong> Did you sleep through the night? </strong>
+  <%= @pain_record.slept_through_night %>
+</p>
+
+<p>
+  <strong> If not, how many times was your sleep disrupted? </strong>
+  <%= @pain_record.slept_through_night_disrupted_times %>
+</p>
+
+<p>
+  <strong> How many hours did you sleep during the night? </strong>
+  <%= @pain_record.slept_hours_night %>
+</p>
+
+<p>
+  <strong> Overall, are you satised with your pain management? </strong>
+  <%= @pain_record.satisfied_with_pain_management %>
+</p>
+
+<p>
+  <strong> (Explain what makes you satised or not satisfied.  </strong>
+  <%= @pain_record.why_satisfied_or_not %>
+</p>
+
+<p>
+  <strong> What pain level overall would you nd acceptable? </strong>
+  <%= @pain_record.acceptable_pain_level %>
 </p>
 
 <%= link_to 'Edit', edit_pain_record_path(@pain_record) %> |

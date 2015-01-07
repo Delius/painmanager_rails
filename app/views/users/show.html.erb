@@ -1,1 +1,10 @@
-<%= @user.email  %>
+<div class="col-md-8">
+  <%= @user.user_name%>
+  <% if @user.pain_records.any? %>
+      <h3>Painrecords (<%= @user.pain_records.count %>)</h3>
+      <ol class="painrecords">
+        <%= render @user.pain_records %>
+      </ol>
+      <%= will_paginate @pain_records %>
+  <% end %>
+</div>
