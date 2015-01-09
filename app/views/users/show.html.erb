@@ -3,7 +3,36 @@
   <% if @user.pain_records.any? %>
       <h3>Painrecords (<%= @user.pain_records.count %>)</h3>
       <ol class="painrecords">
-        <%= render @user.pain_records %>
+
+        <%= column_chart PainRecord.group(:had_pain_today).count %>
+
+        <table>
+          <thead>
+          <tr>
+            <th width="50">Id</th>
+            <th>Date</th>
+            <th width="50">Had Pain</th>
+            <th width="50">Skipped Activities</th>
+            <th width="50">All med.Taken</th>
+            <th width="50">Had unrelieved pain</th>
+            <th width="50">Unrelieved pain ocured n times</th>
+            <th width="50">Activity started pain</th>
+            <th width="50">Avg Pain Level</th>
+            <th width="50">Other actions to relieve pain</th>
+            <th width="50">skipped medicines</th>
+            <th width="50">Called doctor because of pain</th>
+            <th width="50">Slept all night</th>
+            <th width="50">Wake up through night</th>
+            <th width="50">Times woken up</th>
+            <th width="50">Satisfied with pain mngment</th>
+            <th width="50">Acceptable pain level</th>
+          </tr>
+          </thead>
+          <tbody>
+          <%= render @user.pain_records %>
+          </tbody>
+        </table>
+
       </ol>
       <%= will_paginate @pain_records %>
   <% end %>
