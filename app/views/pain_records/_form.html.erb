@@ -25,13 +25,15 @@
       <tbody>
       <tr>
         <td><%= f.label  :did_you_have_pain_today? %></td>
-        <td><%= f.check_box :had_pain_today  %></td>
+        <td><%= f.label  :did_you_have_pain_today? , "Yes", :value => "Yes" %><%= f.radio_button :had_pain_today, "Yes"  %><br>
+        <%= f.label  :did_you_have_pain_today? , "No" %></bt><%= f.radio_button :had_pain_today, "No",  :checked => true   %></td>
       </tr>
       <tr>
         <td><%= f.label  :limited_activities,
                          'Did you avoid or limit any of your activities or cancel plans today
                           because of pain or changes in your pain?' %><br></td>
-        <td><%= f.check_box :limited_activities  %> </td>
+        <td><%= f.label  :limited_activities? , "Yes", :value => "Yes" %><%= f.radio_button :limited_activities, "Yes"  %><br>
+          <%= f.label  :limited_activities? , "No" %></bt><%= f.radio_button :limited_activities, "No",  :checked => true   %></td>
       </tr>
       <tr>
         <td></td>
@@ -41,14 +43,16 @@
         <td> <%= f.label  :all_medicines_taken,
                           'Did you take all your pain medicine today according to
                           instructions?' %><br></td>
-        <td><%= f.check_box :all_medicines_taken  %></td>
+        <td><%= f.label  :all_medicines_taken? , "Yes", :value => "Yes" %><%= f.radio_button :all_medicines_taken, "Yes"  %><br>
+          <%= f.label  :all_medicines_taken? , "No" %></bt><%= f.radio_button :all_medicines_taken, "No",  :checked => true   %></td>
       </tr>
       <tr>
         <td><%= f.label  :unrelieved_pain,
                          'Even though you took your pain medicine for persistent pain on
                           schedule , were there times during the day that you experienced
                           unrelieved breakthrough pain? ' %></td>
-        <td><%= f.check_box :unrelieved_pain  %></td>
+        <td><%= f.label  :unrelieved_pain? , "Yes", :value => "Yes" %><%= f.radio_button :unrelieved_pain, "Yes"  %><br>
+          <%= f.label  :unrelieved_pain? , "No" %></bt><%= f.radio_button :unrelieved_pain, "No",  :checked => true   %></td>
       </tr>
       <tr>
         <td></td>
@@ -70,7 +74,8 @@
       <tr>
         <td><%= f.label  :is_activity_starting_pain,
                          'Did any specic activity start your breakthrough pain?' %></td>
-        <td><%= f.check_box :is_activity_starting_pain  %></td>
+        <td><%= f.label  :is_activity_starting_pain? , "Yes", :value => "Yes" %><%= f.radio_button :is_activity_starting_pain, "Yes"  %><br>
+          <%= f.label  :is_activity_starting_pain? , "No" %></bt><%= f.radio_button :is_activity_starting_pain, "No",  :checked => true   %></td>
       </tr>
       <tr>
         <td></td>
@@ -104,7 +109,8 @@
         <td><%= f.label  :used_other_actions_to_relieve_pain,
                          'Other than prescription medicine, did you do anything else today
                           to relieve the pain? ' %></td>
-        <td><%= f.check_box :used_other_actions_to_relieve_pain  %></td>
+        <td><%= f.label  :used_other_actions_to_relieve_pain? , "Yes", :value => "Yes" %><%= f.radio_button :used_other_actions_to_relieve_pain, "Yes"  %><br>
+          <%= f.label  :used_other_actions_to_relieve_pain? , "No" %></bt><%= f.radio_button :used_other_actions_to_relieve_pain, "No",  :checked => true   %></td>
       </tr>
       <tr>
         <td></td>
@@ -132,7 +138,8 @@ after taking your pain medicine.' %></td>
       <tr>
         <td><%= f.label  :skipped_medicines,
                          'Did you skip any of your scheduled pain medicines today? ' %></td>
-        <td> <%= f.check_box :skipped_medicines  %></td>
+        <td><%= f.label  :skipped_medicines? , "Yes", :value => "Yes" %><%= f.radio_button :skipped_medicines, "Yes"  %><br>
+          <%= f.label  :skipped_medicines? , "No" %></bt><%= f.radio_button :skipped_medicines, "No",  :checked => true   %></td>
       </tr>
       <tr>
         <td></td>
@@ -143,12 +150,14 @@ after taking your pain medicine.' %></td>
         <td><%= f.label  :called_doctor_because_of_pain,
                          'Did you call your doctor’s ofce or clinic between visits because
                           of pain?  ' %></td>
-        <td> <%= f.check_box :called_doctor_because_of_pain  %></td>
+        <td> <%= f.label  :called_doctor_because_of_pain? , "Yes", :value => "Yes" %><%= f.radio_button :called_doctor_because_of_pain, "Yes"  %><br>
+          <%= f.label  :called_doctor_because_of_pain? , "No" %></bt><%= f.radio_button :called_doctor_because_of_pain, "No",  :checked => true   %></td>
       </tr>
       <tr>
         <td><%= f.label  :slept_through_night,
                          'Did you sleep through the night? ' %></td>
-        <td><%= f.check_box :slept_through_night  %></td>
+        <td><%= f.label  :slept_through_night? , "Yes", :value => "Yes" %><%= f.radio_button :slept_through_night, "Yes"  %><br>
+          <%= f.label  :slept_through_night? , "No" %></bt><%= f.radio_button :slept_through_night, "No",  :checked => true   %></td>
       </tr>
       <tr>
         <td></td>
@@ -191,7 +200,8 @@ after taking your pain medicine.' %></td>
       <tr>
         <td><%= f.label  :satisfied_with_pain_management,
                          'Overall, are you satisfied with your pain management?' %></td>
-        <td><%= f.check_box :satisfied_with_pain_management  %></td>
+        <td><%= f.label  :satisfied_with_pain_management? , "Yes", :value => "Yes" %><%= f.radio_button :satisfied_with_pain_management, "Yes"  %><br>
+          <%= f.label  :satisfied_with_pain_management? , "No" %></bt><%= f.radio_button :satisfied_with_pain_management, "No",  :checked => true   %></td>
       </tr>
       <tr>
         <td><%= f.label :why_satisfied_or_not, '(Explain what makes you satisfed or not satised.

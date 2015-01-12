@@ -3,9 +3,16 @@
   <% if @user.pain_records.any? %>
       <h3>Painrecords (<%= @user.pain_records.count %>)</h3>
       <ol class="painrecords">
-
-        <%= column_chart PainRecord.group(:had_pain_today).count %>
-
+        You had pain
+        <%= pie_chart PainRecord.group(:had_pain_today).count %>
+        Your activity was limited because of pain
+        <%= pie_chart PainRecord.group(:limited_activities).count %>
+        Name of skipped activities
+        <%= pie_chart PainRecord.group(:limited_activities_name).count %>
+        Times when you skipped your medecines
+        <%= pie_chart PainRecord.group(:all_medicines_taken).count %>
+        How often you had unrelieved pain
+        <%= pie_chart PainRecord.group(:unrelieved_pain).count %>
         <table>
           <thead>
           <tr>
