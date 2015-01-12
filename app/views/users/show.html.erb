@@ -1,46 +1,160 @@
+<div class="center row">
 <div class="col-md-8">
   <%= @user.user_name%>
   <% if @user.pain_records.any? %>
       <h3>Painrecords (<%= @user.pain_records.count %>)</h3>
       <ol class="painrecords">
-        You had pain
-        <%= pie_chart PainRecord.group(:had_pain_today).count %>
-        Your activity was limited because of pain
-        <%= pie_chart PainRecord.group(:limited_activities).count %>
-        Name of skipped activities
-        <%= pie_chart PainRecord.group(:limited_activities_name).count %>
-        Times when you skipped your medecines
-        <%= pie_chart PainRecord.group(:all_medicines_taken).count %>
-        How often you had unrelieved pain
-        <%= pie_chart PainRecord.group(:unrelieved_pain).count %>
-        <table>
-          <thead>
-          <tr>
-            <th width="50">Id</th>
-            <th>Date</th>
-            <th width="50">Had Pain</th>
-            <th width="50">Skipped Activities</th>
-            <th width="50">All med.Taken</th>
-            <th width="50">Had unrelieved pain</th>
-            <th width="50">Unrelieved pain ocured n times</th>
-            <th width="50">Activity started pain</th>
-            <th width="50">Avg Pain Level</th>
-            <th width="50">Other actions to relieve pain</th>
-            <th width="50">skipped medicines</th>
-            <th width="50">Called doctor because of pain</th>
-            <th width="50">Slept all night</th>
-            <th width="50">Wake up through night</th>
-            <th width="50">Times woken up</th>
-            <th width="50">Satisfied with pain mngment</th>
-            <th width="50">Acceptable pain level</th>
-          </tr>
-          </thead>
-          <tbody>
-          <%= render @user.pain_records %>
-          </tbody>
-        </table>
+        <div class="row">
+
+          <div class="large-6 columns">
+            <div class="panel">
+              <h5>Days with Pain vs Days Without Pain</h5>
+
+              <%= column_chart PainRecord.group(:had_pain_today).count %>
+            </div>
+          </div>
+          <div class="large-6 columns">
+            <div class="panel">
+              <h5>Normal vs Limited activity</h5>
+
+              <%= pie_chart PainRecord.group(:limited_activities).count %>
+            </div>
+          </div>
+
+          </div>
+
+        <div class="row">
+
+          <div class="large-6 columns">
+            <div class="panel">
+              <h5>What activities are affected the most by pain</h5>
+
+              <%= pie_chart PainRecord.group(:limited_activities_name).count %></div>
+          </div>
+          <div class="large-6 columns">
+            <div class="panel">
+              <h5>Your medicine schedule adherence</h5>
+
+              <%= pie_chart PainRecord.group(:all_medicines_taken).count %>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="row">
+
+          <div class="large-6 columns">
+            <div class="panel">
+              <h5> Times when your pain wont go away</h5>
+
+              <%= pie_chart PainRecord.group(:unrelieved_pain).count %>
+            </div>
+          </div>
+          <div class="large-6 columns">
+            <div class="panel">
+              <h5>Your Pain Triggers</h5>
+
+              <%= pie_chart PainRecord.group(:activity_starting_pain_name).count %>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="row">
+
+          <div class="large-6 columns">
+            <div class="panel">
+              <h5> Your average pain level</h5>
+
+              <%= pie_chart PainRecord.group(:average_pain_level).count %>
+            </div>
+          </div>
+          <div class="large-6 columns">
+            <div class="panel">
+              <h5>have you skipped your medicines</h5>
+
+              <%= pie_chart PainRecord.group(:skipped_medicines).count %>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="row">
+
+          <div class="large-6 columns">
+            <div class="panel">
+              <h5>Your acceptable pain level</h5>
+
+
+              <%= pie_chart PainRecord.group(:acceptable_pain_level).count %>
+            </div>
+          </div>
+          <div class="large-6 columns">
+            <div class="panel">
+              <h5>What you do to relieve pain</h5>
+
+
+              <%= pie_chart PainRecord.group(:other_actions_to_relieve_pain_name).count %>
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+
+
+
+
+        <!--<table>-->
+          <!--<thead>-->
+          <!--<tr>-->
+            <!--<th width="50">Id</th>-->
+            <!--<th>Date</th>-->
+            <!--<th width="50">Had Pain</th>-->
+            <!--<th width="50">Skipped Activities</th>-->
+            <!--<th width="50">All med.Taken</th>-->
+            <!--<th width="50">Had unrelieved pain</th>-->
+            <!--<th width="50">Unrelieved pain ocured n times</th>-->
+            <!--<th width="50">Activity started pain</th>-->
+            <!--<th width="50">Avg Pain Level</th>-->
+            <!--<th width="50">Other actions to relieve pain</th>-->
+            <!--<th width="50">skipped medicines</th>-->
+            <!--<th width="50">Called doctor because of pain</th>-->
+            <!--<th width="50">Slept all night</th>-->
+            <!--<th width="50">Wake up through night</th>-->
+            <!--<th width="50">Times woken up</th>-->
+            <!--<th width="50">Satisfied with pain mngment</th>-->
+            <!--<th width="50">Acceptable pain level</th>-->
+          <!--</tr>-->
+          <!--</thead>-->
+          <!--<tbody>-->
+          <!--#<%= render @user.pain_records %>-->
+          <!--</tbody>-->
+        <!--</table>-->
 
       </ol>
       <%= will_paginate @pain_records %>
   <% end %>
 </div>
+<footer class="row">
+  <div class="large-12 columns">
+    <hr />
+    <div class="row">
+      <div class="large-6 columns">
+        <p>&copy; Copyright no one at all. Go to town.</p>
+      </div>
+      <div class="large-6 columns">
+        <ul class="inline-list right">
+          <li><a href="#">Section 1</a></li>
+          <li><a href="#">Section 2</a></li>
+          <li><a href="#">Section 3</a></li>
+          <li><a href="#">Section 4</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+    </div>

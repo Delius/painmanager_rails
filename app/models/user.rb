@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :pain_records, dependent: :destroy
 
 
+
   def login=(login)
     @login = login
   end
