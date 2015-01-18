@@ -3,10 +3,16 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login ]
-
+  acts_as_taggable_on :pain_records
   has_many :pain_records, dependent: :destroy
+  has_many :pain_onset_trackers, :through => :diaries, dependent: :destroy
+  has_many :pain_triggers, :through => :diaries, dependent: :destroy
+  has_many :diaries
+  accepts_nested_attributes_for :diaries, allow_destroy: true
 
-
+  def average_pain
+    PainRecord.where("created_at > ?", 60.days.ago).average(:average_pain_level).to_i
+  end
 
   def login=(login)
     @login = login

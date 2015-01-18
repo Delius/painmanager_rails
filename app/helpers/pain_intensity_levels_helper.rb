@@ -1,0 +1,2 @@
+module PainIntensityLevelsHelper
+end

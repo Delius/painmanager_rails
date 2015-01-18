@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  resources :pain_descriptions
+
+  resources :pain_intensity_levels
+
+  resources :pain_triggers
+
+  resources :diaries
+
+  resources :pain_onset_trackers
+
   resources :user_conditions
 
   resources :user_moods

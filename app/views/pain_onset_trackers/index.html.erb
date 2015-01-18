@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Pain Onset Trackers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Diary</th>
+      <th>Pain onset speed</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pain_onset_trackers.each do |pain_onset_tracker| %>
+      <tr>
+        <td><%= pain_onset_tracker.diary_id %></td>
+        <td><%= pain_onset_tracker.pain_onset_speed %></td>
+        <td><%= link_to 'Show', pain_onset_tracker %></td>
+        <td><%= link_to 'Edit', edit_pain_onset_tracker_path(pain_onset_tracker) %></td>
+        <td><%= link_to 'Destroy', pain_onset_tracker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pain onset tracker', new_pain_onset_tracker_path %>

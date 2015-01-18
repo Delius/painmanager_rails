@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description name:</strong>
+  <%= @pain_description.description_name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @pain_description.user %>
+</p>
+
+<p>
+  <strong>Diary:</strong>
+  <%= @pain_description.diary %>
+</p>
+
+<%= link_to 'Edit', edit_pain_description_path(@pain_description) %> |
+<%= link_to 'Back', pain_descriptions_path %>

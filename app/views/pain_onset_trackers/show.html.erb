@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Diary:</strong>
+  <%= @pain_onset_tracker.diary_id %>
+</p>
+
+<p>
+  <strong>Pain onset speed:</strong>
+  <%= @pain_onset_tracker.pain_onset_speed %>
+</p>
+
+<%= link_to 'Edit', edit_pain_onset_tracker_path(@pain_onset_tracker) %> |
+<%= link_to 'Back', pain_onset_trackers_path %>

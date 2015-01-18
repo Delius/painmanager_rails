@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Pain Triggers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>User</th>
+      <th>Diary</th>
+      <th>Diary</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pain_triggers.each do |pain_trigger| %>
+      <tr>
+        <td><%= pain_trigger.name %></td>
+        <td><%= pain_trigger.user_id %></td>
+        <td><%= pain_trigger.diary_id %></td>
+        <td><%= pain_trigger.diary %></td>
+        <td><%= pain_trigger.user %></td>
+        <td><%= link_to 'Show', pain_trigger %></td>
+        <td><%= link_to 'Edit', edit_pain_trigger_path(pain_trigger) %></td>
+        <td><%= link_to 'Destroy', pain_trigger, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pain trigger', new_pain_trigger_path %>

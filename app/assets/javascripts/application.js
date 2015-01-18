@@ -15,7 +15,9 @@
 //= require foundation
 //= require turbolinks
 //= require_tree .
-
+//= require moment
+//= require bootstrap-datetimepicker
+//= require pickers
 
 $(function(){
     $(window).load(function() {

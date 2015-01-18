@@ -1,0 +1,59 @@
+<div class="center row">
+  <div class="col-md-8">
+<%= simple_form_for(@diary) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+  </div>
+
+
+        <%= f.simple_fields_for :pain_onset_trackers do |p| %>
+            <%= p.input :pain_onset_speed, collection: 1..10, prompt: "Select from  1 (fastest) to 10(slowest)" %>
+        <% end %>
+
+        <%= f.simple_fields_for :pain_intensity_levels do |p| %>
+            <%= p.input :intensity_level, collection: 1..10, prompt: "Select from  1 (fastest) to 10(slowest)" %>
+        <% end %>
+
+        <%= f.simple_fields_for :pain_triggers do |p| %>
+            <%= p.input(:name, label: "Pain Trigger name", as: :check_boxes, collection: [ "Movement",
+                                             "Driving -Stop & Go",
+                                             "Standing",
+                                             "Walking",
+                                             "Lack of Sleep",
+                                             "Weather Rain",
+                                             "Playing with Kids",
+                                             "Physical Exertion",
+                                             "Driving Long Distance",
+                                             "Yard work",
+                                             "Depression",
+                                             "House Cleaning",
+                                             "Withdrawl",
+                                             "Sitting too long",
+                                             "Sinus pressure"], :multiple => true) %>
+        <% end %>
+
+        <%= f.simple_fields_for :pain_descriptions do |p| %>
+            <%= p.input :description_name, :label => "Pain Description(name)", collection: [ "Aching",
+                                             "Stiffness",
+                                             "Soreness",
+                                             "Arthritic",
+                                             "Radiating",
+                                             "Gnawing",
+                                             "Pins and Needles",
+                                             "Sciatic",
+                                             "Burning",
+                                             "Stabing",
+                                             "Sharp",
+                                             "Shooting",
+                                             "Cramping",
+                                             "Dull"] %>
+        <% end %>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+</div>
+    </div>

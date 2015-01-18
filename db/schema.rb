@@ -11,7 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112155231) do
+ActiveRecord::Schema.define(version: 20150118200546) do
+
+  create_table "diaries", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  create_table "pain_descriptions", force: :cascade do |t|
+    t.string   "description_name"
+    t.integer  "user_id"
+    t.integer  "diary_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "pain_descriptions", ["diary_id"], name: "index_pain_descriptions_on_diary_id"
+  add_index "pain_descriptions", ["user_id"], name: "index_pain_descriptions_on_user_id"
+
+  create_table "pain_intensity_levels", force: :cascade do |t|
+    t.integer  "intensity_level"
+    t.integer  "user_id"
+    t.integer  "diary_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "pain_intensity_levels", ["diary_id"], name: "index_pain_intensity_levels_on_diary_id"
+  add_index "pain_intensity_levels", ["user_id"], name: "index_pain_intensity_levels_on_user_id"
+
+  create_table "pain_onset_trackers", force: :cascade do |t|
+    t.integer  "diary_id"
+    t.integer  "pain_onset_speed"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "user_id"
+  end
 
   create_table "pain_records", force: :cascade do |t|
     t.integer  "user_id"
@@ -39,6 +76,56 @@ ActiveRecord::Schema.define(version: 20150112155231) do
     t.integer  "acceptable_pain_level"
     t.string   "had_pain_today"
     t.string   "other_actions_to_relieve_pain_name"
+    t.integer  "activity_level"
+    t.integer  "disposition_level"
+    t.integer  "stress_level"
+    t.integer  "mood_stability_level"
+    t.integer  "pain_onset_speed"
+    t.string   "pain_description"
+    t.integer  "pain_duration"
+    t.string   "pain_trigger"
+    t.integer  "time_to_fall_asleep"
+    t.string   "sleep_type"
+    t.integer  "sleep_interrupted_times"
+    t.integer  "sleep_quality"
+    t.time     "hours_fo_sleep"
+  end
+
+  create_table "pain_triggers", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "diary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "pain_triggers", ["diary_id"], name: "index_pain_triggers_on_diary_id"
+  add_index "pain_triggers", ["user_id"], name: "index_pain_triggers_on_user_id"
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+
+  create_table "trackers", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_conditions", force: :cascade do |t|

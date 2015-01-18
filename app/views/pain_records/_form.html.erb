@@ -21,74 +21,197 @@
         <th width="150"></th>
       </tr>
       </thead>
-
+      <div class="field">
+        <%= f.label :tag_list, "Tags (separated by commas)" %><br />
+        <%= f.text_field :tag_list %>
+      </div>
       <tbody>
       <tr>
-        <td><%= f.label  :did_you_have_pain_today? %></td>
-        <td><%= f.label  :did_you_have_pain_today? , "Yes", :value => "Yes" %><%= f.radio_button :had_pain_today, "Had Pain"  %><br>
-        <%= f.label  :did_you_have_pain_today? , "No" , :value => "Yes" %></bt><%= f.radio_button :had_pain_today, "No Pain",  :checked => true   %></td>
-      </tr>
-      <tr>
-        <td><%= f.label  :limited_activities,
-                         'Did you avoid or limit any of your activities or cancel plans today
-                          because of pain or changes in your pain?' %><br></td>
-        <td><%= f.label  :limited_activities? , "Yes", :value => "Yes" %><%= f.radio_button :limited_activities, "Limited"  %><br>
-          <%= f.label  :limited_activities? , "No" %></bt><%= f.radio_button :limited_activities, "Not limited ",  :checked => true   %></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td> <%= f.label  :all_medicines_taken,
-                          'Did you take all your pain medicine today according to
-                          instructions?' %><br></td>
-        <td><%= f.label  :all_medicines_taken? , "Yes", :value => "Yes" %><%= f.radio_button :all_medicines_taken, "Taken"  %><br>
-          <%= f.label  :all_medicines_taken? , "No" %></bt><%= f.radio_button :all_medicines_taken, "Missed",  :checked => true   %></td>
-      </tr>
-      <tr>
-        <td><%= f.label  :unrelieved_pain,
-                         'Even though you took your pain medicine for persistent pain on
-                          schedule , were there times during the day that you experienced
-                          unrelieved breakthrough pain? ' %></td>
-        <td><%= f.label  :unrelieved_pain? , "Yes", :value => "Yes" %><%= f.radio_button :unrelieved_pain, "Unrelieved"  %><br>
-          <%= f.label  :unrelieved_pain? , "No" %></bt><%= f.radio_button :unrelieved_pain, "No",  :checked => true   %></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><%= f.label  :how_often_unrelieved_pain,'How many times did this happen today?' %><br><%= f.select :how_often_unrelieved_pain, [['1','1'],
-                                                                                                                                            ['2','2'],
-                                                                                                                                            ['3','3'],
-                                                                                                                                            ['4','4'],
-                                                                                                                                            ['5','5'],
-                                                                                                                                            ['6','6'],
-                                                                                                                                            ['7','7'],
-                                                                                                                                            ['8','8'],
-                                                                                                                                            ['9','9'],
-                                                                                                                                            ['10','10'],
-                                                                                                                                            ['more than 10','11']
+      <td>
+        <h3>ACTIVITY LEVEL</h3>
+        <%= f.label  :activity_level,'For most pain sufferers,
+        a day of heavy activity can significantly increase pain levels.
+        For others, not getting enough movement and activity can bring
+        on pain from stiff joints and muscles. Now you can get a better
+        idea of where you land in this spectrum by tracking your activity
+        intensity throughout the day.' %><br>
 
 
-        ]  %></td>
+      </td>
+      <td>
+        <%= f.select :activity_level, [['Light','0'],
+                                           ['Moderate','5'],
+                                           ['Heavy','10']
+
+                                                 ]  %>
+      </td>
       </tr>
       <tr>
-        <td><%= f.label  :is_activity_starting_pain,
-                         'Did any specic activity start your breakthrough pain?' %></td>
-        <td><%= f.label  :is_activity_starting_pain? , "Yes", :value => "Yes" %><%= f.radio_button :is_activity_starting_pain, "Yes"  %><br>
-          <%= f.label  :is_activity_starting_pain? , "No" %></bt><%= f.radio_button :is_activity_starting_pain, "No",  :checked => true   %></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><%= f.label :activity_starting_pain_name,'What activity?' %><br>
-          <%= f.text_field :activity_starting_pain_name %></td>
+      <td>
+        <h3>MENTAL STATE</h3>
+        <%= f.label  :disposition_level,'The Mental State Tracker is designed
+         to track your general demeanor, stress levels, and mood stability
+          along side the more physical aspects of your chronic condition.
+          Pain can often cause stress and depression, but stress and depression
+          can also cause pain. So these two aspects are very intertwined with
+          one another.' %><br>
+
+
+      </td>
+      <td> <%= f.label  :disposition_level,'Disposition Level' %><br>
+        <%= f.select :disposition_level, [['Very Depressed','1'],
+                                           ['Depressed','2'],
+                                           ['Neutral','3'],
+                                           ['Happy','4'],
+                                           ['Very Happy','5']
+
+        ]  %><br><%= f.label  :stress_level,'Stress Level' %><br>
+        <%= f.select :stress_level, [['Very Calm','1'],
+                                          ['Calm','2'],
+                                          ['Neutral','3'],
+                                          ['Stress','4'],
+                                          ['High Stress','5']
+
+
+
+        ]  %><br><%= f.label  :mood_stability_level,'Mood' %><br>
+        <%= f.select :mood_stability_level, [['Very Stable','1'],
+                                     ['Stable','2'],
+                                     ['Neutral','3'],
+                                     ['Erratic','4'],
+                                     ['Very Erratic','5']
+
+        ]  %>
+      </td>
       </tr>
       <tr>
         <td>
-          <%= f.label  :average_pain_level,'What was your average level of pain today?' %><br>
+          <h3>PAIN ONSET SPEED</h3>
+          <%= f.label  :pain_onset_speed,'The Pain Onset Tracker is designed
+           to collect statistics on how quickly your pain levels increase
+           following a trigger event. This could be something very quick like
+           a pulled muscle related to an acute injury, or it may be something
+           that comes on very slowly – perhaps as a result of weather changes.' %><br>
 
 
         </td>
         <td>
-          <%= f.select :average_pain_level, [['1','1'],
+          <%= f.select :pain_onset_speed, [['Very Slow','1'],
+                                         ['Slow','2'],
+                                         ['Moderate','3'],
+                                         ['Fast','4'],
+                                         ['Very Fast','5']
+
+          ]  %>
+        </td>
+      </tr>
+      <tr>
+        <td><h3>PAIN DESCRIPTION</h3>
+        <%= f.label :pain_description,'Your doctor will often ask you,
+        “What does your pain feel like?” This important diagnostic metric
+        helps to identify the possible causes or mechanisms of your pain.
+        Because of this, the Pain Description should be a frequently
+        used element of your Diary Entries.' %></td>
+
+         <td>  <%= f.select(:pain_description, options_for_select([['Aching','1'],
+                                                ['Stiffness','2'],
+                                                ['Soreness','3'],
+                                                ['Arthritic','4'],
+                                                ['Radiating','5'],
+                                                ['Gnaving','6'],
+                                                ['Pins and Needles','7'],
+                                                ['Sciatic','8'],
+                                                ['Stabbing','9'],
+                                                ['Sharp','10'],
+                                                ['Shooting','11'],
+                                                ['Cramping','12'],
+                                                ['Dull','13']
+
+         ]), { :prompt => "Please select"}, { :multiple => true}) %><br>
+         <small>Please use "ctrl" key to highlight more than one</small></td>
+      </tr>
+      <tr>
+        <td><h3>PAIN DURATION</h3>
+          <%= f.label :pain_duration,'The Pain Duration Tracker
+           allows you to track the approximate duration of pain
+           attacks. This Tracker is targeted at people experiencing
+            intermittent pain issues.' %></td>
+
+        <td>  <%= f.select :pain_duration, ([['Very Short','1'],
+                                                                    ['Short','2'],
+                                                                    ['Moderate','3'],
+                                                                    ['Long','4'],
+                                                                    ['Very Long','5']
+
+                                                                   ])%></td>
+      </tr>
+      <tr>
+        <td><h3>PAIN TRIGERS</h3>
+          <%= f.label :pain_trigger,'Your doctor will often ask you,
+        “What does your pain feel like?” This important diagnostic metric
+        helps to identify the possible causes or mechanisms of your pain.
+        Because of this, the Pain Description should be a frequently
+        used element of your Diary Entries.' %></td>
+
+        <td>  <%= select_tag :pain_trigger, options_for_select([['Movement','1'],
+                                                                    ['Driving - Sto & Go','2'],
+                                                                    ['Standing','3'],
+                                                                    ['Walking','4'],
+                                                                    ['Lack of Sleep','5'],
+                                                                    ['Weather - Rain','6'],
+                                                                    ['Playing with kids','7'],
+                                                                    ['Physical Exerction','8'],
+                                                                    ['Driving Long Distance','9'],
+                                                                    ['Stress','10'],
+                                                                    ['Yard Work','11'],
+                                                                    ['Depression','12'],
+                                                                    ['House Cleaning','13'],
+                                                                    ['Withdrawl','14'],
+                                                                    ['Sitting to Long','15'],
+                                                                    ['Sinus Pressure','16']
+
+                                                                   ]), :size => 5, :multiple => true , :style => "height:150px"  %><br>
+          <small>Please use "ctrl" key to highlight more than one</small></td>
+      </tr>
+      <tr>
+        <td><h3>PAIN LOCATION</h3><%= f.label :pain_placement,
+                                              'One of the most challenging aspects
+         of pain to document and communicate is the location of pain. This is particularly true
+          for people with conditions that cause pain to appear in multiple locations throughout
+           their body. But knowing where a person is hurting is also one of the most important
+           diagnostic tools for a doctor, so the need to accurately depict a pain location profile
+           is a key feature of a pain tracking application.' %></td>
+        <td>  <%= f.select :pain_placement, ([['Head Front','1'],
+                                                                                    ['Head Back','2'],
+                                                                                    ['Neck','3'],
+                                                                                    ['Upper Front','4'],
+                                                                                    ['Lower Front','5'],
+                                                                                    ['Upper Back','6'],
+                                                                                    ['Lower Back','7'],
+                                                                                    ['Right Arm','8'],
+                                                                                    ['Left Arm','9'],
+                                                                                    ['Right Leg','10'],
+                                                                                    ['Left Leg','11'],
+                                                                                    ['Right Feet','12'],
+                                                                                    ['Left Feet','13'],
+                                                                                    ['Left hand','14'],
+                                                                                    ['Right hand','15'],
+                                                                                    ['Lower Front','16']
+
+      ])%></td>
+      </tr>
+      <tr>
+        <td><h3>SLEEP HISTORY</h3>
+          <%= f.label  :hours_fo_sleep,'The Sleep Tracker is designed
+           to track everything about your nocturnal downtime. You can
+            track hours of sleep per day (broken down between overnight
+            and naps),track sleep interruptions and sleep quality, as well
+             as when you use sleep aids.?' %><br>
+
+
+        </td>
+        <td>Hours of sleep<br>
+          <%= f.select :hours_fo_sleep, [['1','1'],
                                              ['2','2'],
                                              ['3','3'],
                                              ['4','4'],
@@ -101,132 +224,60 @@
 
 
 
+          ]  %><br>
+
+        <br>
+        Time to Fall Asleep<br>
+          <%= f.select :hours_fo_sleep, [['15 mins','1'],
+                                         ['30 mins','2'],
+                                         ['45 mins','3'],
+                                         ['60 mins','4'],
+                                         ['more than hour','5'],
+                                         ['hour and half','6'],
+                                         ['two hours','7'],
+                                         ['more','8']
+
+          ]  %><br>
+
+
+        Sleep type<br>
+          <%= f.select :sleep_type, [['Overnite','1'],
+                                         ['Nap','2']
+
+
+          ]  %><br>
+
+
+        Time Sleep Interrupted<br>
+          <%= f.select :sleep_interrupted_times, [['1','1'],
+                                         ['2','2'],
+                                         ['3','3'],
+                                         ['4','4'],
+                                         ['5','5'],
+                                         ['6','6'],
+                                         ['7','7'],
+                                         ['more','8']
+
+          ]  %><br>
+
+
+        Sleep Quality<br>
+          <%= f.select :sleep_quality, [['1','1'],
+                                                  ['2','2'],
+                                                  ['3','3'],
+                                                  ['4','4'],
+                                                  ['5','5'],
+                                                  ['6','6'],
+                                                  ['7','7'],
+                                                  ['8','8'],
+                                                  ['9','9'],
+                                                  ['10','10']
+
           ]  %>
+
         </td>
       </tr>
-      <tr>
-        <td><%= f.label  :used_other_actions_to_relieve_pain,
-                         'Other than prescription medicine, did you do anything else today
-                          to relieve the pain? ' %></td>
-        <td><%= f.label  :used_other_actions_to_relieve_pain? , "Yes", :value => "Yes" %><%= f.radio_button :used_other_actions_to_relieve_pain, "Yes"  %><br>
-          <%= f.label  :used_other_actions_to_relieve_pain? , "No" %></bt><%= f.radio_button :used_other_actions_to_relieve_pain, "No",  :checked => true   %></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><%= f.label :other_actions_to_relieve_pain_name, 'Note any that you used.' %><br>
-          <%= f.text_area :other_actions_to_relieve_pain_name %></td>
-      </tr>
-      <tr>
-        <td><%= f.label :pain_placement, 'Where did you have pain?' %></td>
-        <td><%= f.text_field :pain_placement %></td>
-      </tr>
-      <tr>
-        <td><%= f.label :side_effects_after_pain_medicine, 'Select any of these common side effects that you’ve noticed
-after taking your pain medicine.' %></td>
-        <td> <%= f.select :side_effects_after_pain_medicine,
-                          [
-                                  ['Drowsiness, sleepiness','1'],
-                                  ['Nausea, vomiting, upset stomach','2'],
-                                  ['Constipation ','3'],
-                                  ['Lack of appetite','4'],
-                                  ['Other ','5'],
-                                  ['None ','6']
 
-
-                          ], { :multiple => true, :size => 5 } %></td>
-      </tr>
-      <tr>
-        <td><%= f.label  :skipped_medicines,
-                         'Did you skip any of your scheduled pain medicines today? ' %></td>
-        <td><%= f.label  :skipped_medicines? , "Yes", :value => "Yes" %><%= f.radio_button :skipped_medicines, "Yes"  %><br>
-          <%= f.label  :skipped_medicines? , "No" %></bt><%= f.radio_button :skipped_medicines, "No",  :checked => true   %></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><%= f.label :skipped_medicines_why, 'Why?' %><br>
-          <%= f.text_area :skipped_medicines_why %></td>
-      </tr>
-      <tr>
-        <td><%= f.label  :called_doctor_because_of_pain,
-                         'Did you call your doctor’s ofce or clinic between visits because
-                          of pain?  ' %></td>
-        <td> <%= f.label  :called_doctor_because_of_pain? , "Yes", :value => "Yes" %><%= f.radio_button :called_doctor_because_of_pain, "Yes"  %><br>
-          <%= f.label  :called_doctor_because_of_pain? , "No" %></bt><%= f.radio_button :called_doctor_because_of_pain, "No",  :checked => true   %></td>
-      </tr>
-      <tr>
-        <td><%= f.label  :slept_through_night,
-                         'Did you sleep through the night? ' %></td>
-        <td><%= f.label  :slept_through_night? , "Yes", :value => "Yes" %><%= f.radio_button :slept_through_night, "Yes"  %><br>
-          <%= f.label  :slept_through_night? , "No" %></bt><%= f.radio_button :slept_through_night, "No",  :checked => true   %></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><%= f.label  :slept_through_night_disrupted_times,'If not, how many times was your sleep disrupted?' %><br>
-
-          <%= f.select :slept_through_night_disrupted_times, [['1','1'],
-                                                              ['2','2'],
-                                                              ['3','3'],
-                                                              ['4','4'],
-                                                              ['5','5'],
-                                                              ['6','6'],
-                                                              ['7','7'],
-                                                              ['8','8'],
-                                                              ['9','9'],
-                                                              ['10','10']
-
-
-
-          ]  %></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td> <%= f.label  :slept_hours_night,'How many hours did you sleep during the night??' %><br>
-
-          <%= f.select :slept_hours_night, [['1','1'],
-                                            ['2','2'],
-                                            ['3','3'],
-                                            ['4','4'],
-                                            ['5','5'],
-                                            ['6','6'],
-                                            ['7','7'],
-                                            ['8','8'],
-                                            ['9','9'],
-                                            ['10','10']
-
-
-
-          ]  %></td>
-      </tr>
-      <tr>
-        <td><%= f.label  :satisfied_with_pain_management,
-                         'Overall, are you satisfied with your pain management?' %></td>
-        <td><%= f.label  :satisfied_with_pain_management? , "Yes", :value => "Yes" %><%= f.radio_button :satisfied_with_pain_management, "Yes"  %><br>
-          <%= f.label  :satisfied_with_pain_management? , "No" %></bt><%= f.radio_button :satisfied_with_pain_management, "No",  :checked => true   %></td>
-      </tr>
-      <tr>
-        <td><%= f.label :why_satisfied_or_not, '(Explain what makes you satisfed or not satised.
-                                               Use Log section.' %></td>
-        <td><%= f.text_area :why_satisfied_or_not %></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td> <%= f.label  :acceptable_pain_level,'What pain level overall would you find acceptable?' %><br>
-
-          <%= f.select :acceptable_pain_level, [['1','1'],
-                                                ['2','2'],
-                                                ['3','3'],
-                                                ['4','4'],
-                                                ['5','5'],
-                                                ['6','6'],
-                                                ['7','7'],
-                                                ['8','8'],
-                                                ['9','9'],
-                                                ['10','10']
-
-
-
-          ]  %></td>
-      </tr>
       </tbody>
     </table>
 

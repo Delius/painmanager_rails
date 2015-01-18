@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description_name: MyString
+  user_id: 
+  diary_id: 
+
+two:
+  description_name: MyString
+  user_id: 
+  diary_id: 

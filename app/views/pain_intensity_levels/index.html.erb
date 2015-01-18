@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Pain Intensity Levels</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Intensity level</th>
+      <th>User</th>
+      <th>Diary</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pain_intensity_levels.each do |pain_intensity_level| %>
+      <tr>
+        <td><%= pain_intensity_level.intensity_level %></td>
+        <td><%= pain_intensity_level.user %></td>
+        <td><%= pain_intensity_level.diary %></td>
+        <td><%= link_to 'Show', pain_intensity_level %></td>
+        <td><%= link_to 'Edit', edit_pain_intensity_level_path(pain_intensity_level) %></td>
+        <td><%= link_to 'Destroy', pain_intensity_level, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pain intensity level', new_pain_intensity_level_path %>

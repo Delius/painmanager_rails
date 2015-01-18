@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<%= @diary.pain_onset_trackers.each do |pain| %>
+  <strong>Pain Onset Speed: </strong><h1><%= pain.pain_onset_speed %></h1>
+    <% end %><br>
+<%= link_to 'Edit', edit_diary_path(@diary) %> |
+<%= link_to 'Back', diaries_path %>

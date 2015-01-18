@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Intensity level:</strong>
+  <%= @pain_intensity_level.intensity_level %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @pain_intensity_level.user %>
+</p>
+
+<p>
+  <strong>Diary:</strong>
+  <%= @pain_intensity_level.diary %>
+</p>
+
+<%= link_to 'Edit', edit_pain_intensity_level_path(@pain_intensity_level) %> |
+<%= link_to 'Back', pain_intensity_levels_path %>

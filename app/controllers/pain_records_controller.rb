@@ -10,6 +10,7 @@ class PainRecordsController < ApplicationController
   end
 
   def show
+    @pain_record = PainRecord.find(params[:id])
     respond_with(@pain_record)
   end
 
@@ -70,7 +71,22 @@ class PainRecordsController < ApplicationController
                                           :why_satisfied_or_not,
                                           :acceptable_pain_level,
                                           :had_pain_today,
-                                          :other_actions_to_relieve_pain_name
+                                          :other_actions_to_relieve_pain_name,
+                                          :activity_level,
+                                          :disposition_level,
+                                          :stress_level,
+                                          :mood_stability_level,
+                                          :pain_onset_speed,
+                                          :pain_description,
+                                          :pain_duration,
+                                          :pain_trigger,
+                                          :time_to_fall_asleep,
+                                          :sleep_type,
+                                          :sleep_interrupted_times,
+                                          :sleep_quality,
+                                          :hours_fo_sleep,
+                                          :tag_list
+
       )
     end
 end

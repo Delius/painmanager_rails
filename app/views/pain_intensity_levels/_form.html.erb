@@ -1,0 +1,13 @@
+<%= simple_form_for(@pain_intensity_level) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :intensity_level %>
+    <%= f.association :user %>
+    <%= f.association :diary %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

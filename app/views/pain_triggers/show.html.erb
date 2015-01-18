@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pain_trigger.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @pain_trigger.user_id %>
+</p>
+
+<p>
+  <strong>Diary:</strong>
+  <%= @pain_trigger.diary_id %>
+</p>
+
+<p>
+  <strong>Diary:</strong>
+  <%= @pain_trigger.diary %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @pain_trigger.user %>
+</p>
+
+<%= link_to 'Edit', edit_pain_trigger_path(@pain_trigger) %> |
+<%= link_to 'Back', pain_triggers_path %>

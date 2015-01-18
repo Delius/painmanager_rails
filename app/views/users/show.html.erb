@@ -1,8 +1,40 @@
 <div class="center row">
 <div class="col-md-8">
-  <%= @user.user_name%>
+  <h1>Chronic Pain Manager Report</h1>
+
+  <h2><%= @user.user_name %></h2><br>
+  <strong><%= @user.email %></strong><br>
+  <span class="label"><strong>User since: <%= @user.created_at.strftime("%d %b %y") %></strong></span><br>
+  Your average pain onset speed <%= @user.pain_onset_trackers.average(:pain_onset_speed) %><br>
+  --------------------------
+
+
+  <% @user.diaries.each do |diary| %>
+
+      <div class="panel">
+      <div class="panel callout radius">
+        <h5><strong>NR: <%= diary.id %> Created at:</strong> <%= diary.created_at.strftime("%d %b %y, %I:%M %p") %></h5>
+      </div>
+      <% diary.pain_onset_trackers.each do |pain_onset| %>
+          Pain Onset speed: <%= pain_onset.pain_onset_speed %><br>
+      <% end %>
+      <% diary.pain_triggers.each do |pain_trigger| %>
+          Pain Triggers: <%= pain_trigger.name %><br>
+      <% end %>
+        <% diary.pain_intensity_levels.each do |intensity_level| %>
+            Pain Intensity Level: <%= intensity_level.intensity_level %><br>
+        <% end %>
+        <% diary.pain_descriptions.each do |pain_description| %>
+            Pain Name (description): <%= pain_description.description_name %><br>
+        <% end %>
+      </div>
+  <% end %>
+
+
+
+  =================  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  =================
   <% if @user.pain_records.any? %>
-      <h3>Painrecords (<%= @user.pain_records.count %>)</h3>
+      <h3>Painrecords (<%= @user.pain_records.count %>)<br> Average pain level: <%= @user.average_pain  %></h3>
       <ol class="painrecords">
         <div class="row">
 

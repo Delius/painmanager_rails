@@ -4,7 +4,14 @@
   <strong>User:</strong>
   <%= @pain_record.user_id %>
 </p>
-
+<p>
+  <strong> Activity Level </strong>
+<h1><%= @pain_record.activity_level %></h1>/<h1>10</h1>
+</p>
+<p>
+  <strong> Pain Description </strong>
+<h1><%= @pain_record.pain_description  %></h1>
+</p>
 <p>
   <strong>Did you have pain today?</strong>
   <%= @pain_record.had_pain_today %>
@@ -88,10 +95,7 @@
   <%= @pain_record.slept_through_night %>
 </p>
 
-<p>
-  <strong> If not, how many times was your sleep disrupted? </strong>
-  <%= @pain_record.slept_through_night_disrupted_times %>
-</p>
+
 
 <p>
   <strong> How many hours did you sleep during the night? </strong>
