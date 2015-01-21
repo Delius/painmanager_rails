@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Act name:</strong>
+  <%= @activity_level.act_name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @activity_level.user %>
+</p>
+
+<p>
+  <strong>Diary:</strong>
+  <%= @activity_level.diary %>
+</p>
+
+<%= link_to 'Edit', edit_activity_level_path(@activity_level) %> |
+<%= link_to 'Back', activity_levels_path %>

@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150118200546) do
+ActiveRecord::Schema.define(version: 20150120141402) do
+
+  create_table "activity_levels", force: :cascade do |t|
+    t.integer  "act_level"
+    t.integer  "user_id"
+    t.integer  "diary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "activity_levels", ["diary_id"], name: "index_activity_levels_on_diary_id"
+  add_index "activity_levels", ["user_id"], name: "index_activity_levels_on_user_id"
 
   create_table "diaries", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +30,41 @@ ActiveRecord::Schema.define(version: 20150118200546) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
   end
+
+  create_table "effective_treatments", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "diary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "effective_treatments", ["diary_id"], name: "index_effective_treatments_on_diary_id"
+  add_index "effective_treatments", ["user_id"], name: "index_effective_treatments_on_user_id"
+
+  create_table "mental_states", force: :cascade do |t|
+    t.string   "disposition"
+    t.string   "stress"
+    t.string   "mood_stability"
+    t.integer  "user_id"
+    t.integer  "diary_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "mental_states", ["diary_id"], name: "index_mental_states_on_diary_id"
+  add_index "mental_states", ["user_id"], name: "index_mental_states_on_user_id"
+
+  create_table "other_symptoms", force: :cascade do |t|
+    t.string   "symotom_name"
+    t.integer  "user_id"
+    t.integer  "diary_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "other_symptoms", ["diary_id"], name: "index_other_symptoms_on_diary_id"
+  add_index "other_symptoms", ["user_id"], name: "index_other_symptoms_on_user_id"
 
   create_table "pain_descriptions", force: :cascade do |t|
     t.string   "description_name"
@@ -30,6 +76,17 @@ ActiveRecord::Schema.define(version: 20150118200546) do
 
   add_index "pain_descriptions", ["diary_id"], name: "index_pain_descriptions_on_diary_id"
   add_index "pain_descriptions", ["user_id"], name: "index_pain_descriptions_on_user_id"
+
+  create_table "pain_durations", force: :cascade do |t|
+    t.integer  "duration_level"
+    t.integer  "user_id"
+    t.integer  "diary_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "pain_durations", ["diary_id"], name: "index_pain_durations_on_diary_id"
+  add_index "pain_durations", ["user_id"], name: "index_pain_durations_on_user_id"
 
   create_table "pain_intensity_levels", force: :cascade do |t|
     t.integer  "intensity_level"
@@ -121,12 +178,6 @@ ActiveRecord::Schema.define(version: 20150118200546) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
-
-  create_table "trackers", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "user_conditions", force: :cascade do |t|
     t.integer  "user_id"

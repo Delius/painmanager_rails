@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @effective_treatment.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @effective_treatment.user %>
+</p>
+
+<p>
+  <strong>Diary:</strong>
+  <%= @effective_treatment.diary %>
+</p>
+
+<%= link_to 'Edit', edit_effective_treatment_path(@effective_treatment) %> |
+<%= link_to 'Back', effective_treatments_path %>

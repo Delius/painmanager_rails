@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Disposition:</strong>
+  <%= @mental_state.disposition %>
+</p>
+
+<p>
+  <strong>Stress:</strong>
+  <%= @mental_state.stress %>
+</p>
+
+<p>
+  <strong>Mood stability:</strong>
+  <%= @mental_state.mood_stability %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @mental_state.user %>
+</p>
+
+<p>
+  <strong>Diary:</strong>
+  <%= @mental_state.diary %>
+</p>
+
+<%= link_to 'Edit', edit_mental_state_path(@mental_state) %> |
+<%= link_to 'Back', mental_states_path %>

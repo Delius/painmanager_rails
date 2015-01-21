@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Symotom name:</strong>
+  <%= @other_symptom.symotom_name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @other_symptom.user %>
+</p>
+
+<p>
+  <strong>Diary:</strong>
+  <%= @other_symptom.diary %>
+</p>
+
+<%= link_to 'Edit', edit_other_symptom_path(@other_symptom) %> |
+<%= link_to 'Back', other_symptoms_path %>

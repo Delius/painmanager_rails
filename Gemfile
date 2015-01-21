@@ -31,10 +31,13 @@ gem 'chartkick'
 gem 'acts-as-taggable-on'
 gem 'simple_form'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
-
+gem 'foundation-icons-sass-rails'
+gem "font-awesome-sass"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+group :development do
+  gem 'rails_layout'
+end
 # Use Unicorn as the app server
 # gem 'unicorn'
 

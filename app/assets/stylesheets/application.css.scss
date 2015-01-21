@@ -13,6 +13,16 @@
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
-  *= require bootstrap-datetimepicker
+ *= require bootstrap-datetimepicker
+ *=require foundation-icons
+ *= require font-awesome
+
 
  */
+
+
+
+@import "foundation/components/panels";
+$include-html-panel-classes: $include-html-classes !default;
+
+

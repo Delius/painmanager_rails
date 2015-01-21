@@ -6,50 +6,160 @@
   <div class="form-inputs">
 
   </div>
+        <div class="row">
+
+          <div class="large-3 columns">
+            <div class="panel">
+              <h5>Rate Your Activity Level</h5>
+              <%= f.simple_fields_for :activity_levels do |p| %>
+                  <%= p.input :act_level, collection: 1..10, prompt: "Select from  1 (lowest) to 10(highest)" %>
+              <% end %></div>
+          </div>
+          <div class="large-3 columns">
+            <div class="panel">
+              <h5>What best describe your pain? </h5>
+              <%= f.simple_fields_for :pain_descriptions do |p| %>
+                  <%= p.input :description_name, :label => "Pain Description(name)", collection: [ "Aching",
+                                                                                                   "Stiffness",
+                                                                                                   "Soreness",
+                                                                                                   "Arthritic",
+                                                                                                   "Radiating",
+                                                                                                   "Gnawing",
+                                                                                                   "Pins and Needles",
+                                                                                                   "Sciatic",
+                                                                                                   "Burning",
+                                                                                                   "Stabing",
+                                                                                                   "Sharp",
+                                                                                                   "Shooting",
+                                                                                                   "Cramping",
+                                                                                                   "Dull"] %>
+              <% end %>            </div>
+          </div>
+          <div class="large-3  columns">
+          <div class="panel">
+            <h5>How quickly pain onset</h5>
+            <%= f.simple_fields_for :pain_onset_trackers do |p| %>
+                <%= p.input :pain_onset_speed, collection: 1..10, prompt: "Select from  1 (fastest) to 10(slowest)" %>
+            <% end %>          </div>
+        </div>
+          <div class="large-3  columns">
+            <div class="panel">
+              <h5>Rat Your Pain Level</h5>
+              <%= f.simple_fields_for :pain_intensity_levels do |p| %>
+                  <%= p.input :intensity_level, collection: 1..10, prompt: "Select from  1 (lowest) to 10(higest)"  %>
+              <% end %>            </div>
+          </div>
+
+        </div>
 
 
-        <%= f.simple_fields_for :pain_onset_trackers do |p| %>
-            <%= p.input :pain_onset_speed, collection: 1..10, prompt: "Select from  1 (fastest) to 10(slowest)" %>
-        <% end %>
 
-        <%= f.simple_fields_for :pain_intensity_levels do |p| %>
-            <%= p.input :intensity_level, collection: 1..10, prompt: "Select from  1 (fastest) to 10(slowest)" %>
-        <% end %>
+        <div class="row">
 
-        <%= f.simple_fields_for :pain_triggers do |p| %>
-            <%= p.input(:name, label: "Pain Trigger name", as: :check_boxes, collection: [ "Movement",
-                                             "Driving -Stop & Go",
-                                             "Standing",
-                                             "Walking",
-                                             "Lack of Sleep",
-                                             "Weather Rain",
-                                             "Playing with Kids",
-                                             "Physical Exertion",
-                                             "Driving Long Distance",
-                                             "Yard work",
-                                             "Depression",
-                                             "House Cleaning",
-                                             "Withdrawl",
-                                             "Sitting too long",
-                                             "Sinus pressure"], :multiple => true) %>
-        <% end %>
+          <div class="large-3 columns">
+            <div class="panel">
+              <h5>What started your Pain Today?</h5>
+              <%= f.simple_fields_for :pain_triggers do |p| %>
+                  <%= p.input(:name, label: "Choose all that apply (use ctrl key)", collection: [ "Movement",
+                                                                                                  "Driving -Stop & Go",
+                                                                                                  "Standing",
+                                                                                                  "Walking",
+                                                                                                  "Lack of Sleep",
+                                                                                                  "Weather Rain",
+                                                                                                  "Playing with Kids",
+                                                                                                  "Physical Exertion",
+                                                                                                  "Driving Long Distance",
+                                                                                                  "Yard work",
+                                                                                                  "Depression",
+                                                                                                  "House Cleaning",
+                                                                                                  "Withdrawl",
+                                                                                                  "Sitting too long",
+                                                                                                  "Sinus pressure"],:input_html => { :multiple => true ,:style => 'height:200px'}) %>
+              <% end %>             </div>
+          </div>
+          <div class="large-3  columns">
+            <div class="panel">
+              <h5>Your mental State</h5>
+              <%= f.simple_fields_for :mental_states do |p| %>
+                  <%= p.input :disposition, collection: [ "Very depressed",
+                                                          "Depressed",
+                                                          "Neutral",
+                                                          "Happy",
+                                                          "Very Happy"] %><br>
+                  <%= p.input :stress, collection: [ "Very Calm",
+                                                     "Calm",
+                                                     "Neutral",
+                                                     "Stress",
+                                                     "High Stress"] %><br>
+                  <%= p.input :mood_stability, collection: [ "Very Stable",
+                                                             "Stable",
+                                                             "Neutral",
+                                                             "Erratic",
+                                                             "Very Erratic"] %><br>
+              <% end %>            </div>
+          </div>
+          <div class="large-3 columns">
+            <div class="panel">
+              <h5>What other Symptoms do You Have?</h5>
+              <%= f.simple_fields_for :other_symptoms do |p| %>
+                  <%= p.input(:symotom_name, label: "Choose all that apply (use ctrl key)", collection: [ "Fatigue",
+                                                                                                  "Foggy Head",
+                                                                                                  "Tremors",
+                                                                                                  "Very Sleepy",
+                                                                                                  "Head Ache",
+                                                                                                  "Weakness",
+                                                                                                  "Anxiety",
+                                                                                                  "Upset Stomach",
+                                                                                                  "Alergies",
+                                                                                                  "Chills",
+                                                                                                  "Depression",
+                                                                                                  "Constipation"],:input_html => { :multiple => true ,:style => 'height:200px'}) %>
+              <% end %>             </div>
+          </div>
+          <div class="large-3 columns">
+            <div class="panel">
+              <h5>Choose which treatments were wffective</h5>
+              <%= f.simple_fields_for :effective_treatments do |p| %>
+                  <%= p.input(:name, label: "Choose all that apply (use ctrl key)", collection: [ "Medication",
+                                                                                                  "Sitting/Reclinning",
+                                                                                                  "Zero G Chair",
+                                                                                                  "Spinal Cord Stimulator",
+                                                                                                  "Laying Down",
+                                                                                                  "Sleep",
+                                                                                                  "Ice /Cold Compress",
+                                                                                                  "Hot Shower /Sauna",
+                                                                                                  "Floating in the Pool",
+                                                                                                  "Massage"],:input_html => { :multiple => true ,:style => 'height:200px'}) %>            </div>
+          <% end %> </div>
 
-        <%= f.simple_fields_for :pain_descriptions do |p| %>
-            <%= p.input :description_name, :label => "Pain Description(name)", collection: [ "Aching",
-                                             "Stiffness",
-                                             "Soreness",
-                                             "Arthritic",
-                                             "Radiating",
-                                             "Gnawing",
-                                             "Pins and Needles",
-                                             "Sciatic",
-                                             "Burning",
-                                             "Stabing",
-                                             "Sharp",
-                                             "Shooting",
-                                             "Cramping",
-                                             "Dull"] %>
-        <% end %>
+        </div>
+
+      <div class="row">
+
+        <div class="large-3 columns">
+          <div class="panel">
+            <h5>How long was Your Pain?</h5>
+            <%= f.simple_fields_for :pain_durations do |p| %>
+                <%= p.input(:duration_level, label: "Choose all that apply (use ctrl key)", collection: [ [ "Very Short","1"],
+                                                                                                          [ "Short","2"],
+                                                                                                          [ "Moderate","3"],
+                                                                                                          [ "Long","4"],
+                                                                                                          [ "Very Long","5"]
+                                                                                               ]) %>
+            <% end %>             </div>
+        </div>
+
+
+
+
+      </div>
+
+
+
+
+
+
+
 
   <div class="form-actions">
     <%= f.button :submit %>

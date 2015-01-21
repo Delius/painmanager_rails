@@ -1,0 +1,13 @@
+<%= simple_form_for(@activity_level) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :act_name %>
+    <%= f.association :user %>
+    <%= f.association :diary %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

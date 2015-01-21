@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :pain_records, dependent: :destroy
   has_many :pain_onset_trackers, :through => :diaries, dependent: :destroy
   has_many :pain_triggers, :through => :diaries, dependent: :destroy
-  has_many :diaries
+  has_many :diaries, -> { order("created_at DESC") }
   accepts_nested_attributes_for :diaries, allow_destroy: true
 
   def average_pain

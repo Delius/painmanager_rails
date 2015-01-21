@@ -3,5 +3,13 @@
 <%= @diary.pain_onset_trackers.each do |pain| %>
   <strong>Pain Onset Speed: </strong><h1><%= pain.pain_onset_speed %></h1>
     <% end %><br>
+<%= @diary.mental_states.each do |pain| %>
+    <strong>Pain Onset Speed: </strong><h1><%= pain.stress %></h1><br>
+    <h1><%= pain.disposition %></h1><br>
+    <h1><%= pain.mood_stability %></h1>
+<% end %><br>
+<%= @diary.pain_durations.each do |pain| %>
+    <strong>Pain Duration: </strong><h1><%= pain.duration_level %></h1>
+<% end %><br>
 <%= link_to 'Edit', edit_diary_path(@diary) %> |
 <%= link_to 'Back', diaries_path %>

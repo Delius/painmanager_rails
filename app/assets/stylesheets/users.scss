@@ -1,3 +1,58 @@
 // Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
+// They will automatically be included in application.css.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.pain_intensity {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 96px;
+  line-height: 84px;
+  color: red;
+  text-align: center;
+  font-weight: 900;
+  text-shadow: 1px 1px 1px #000,
+  3px 3px 5px grey;
+}
+
+.report_label {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 21px;
+  color: #428bca;
+  text-align: center;
+  font-weight: 900;
+
+}
+
+.report_activity {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 86px;
+  line-height: 72px;
+  color: green;
+  text-align: center;
+  font-weight: 900;
+  text-shadow: 1px 1px 1px #000,
+  3px 3px 5px grey;
+}
+
+.report_duration {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 86px;
+  line-height: 72px;
+  color: saddlebrown;
+  text-align: center;
+  font-weight: 900;
+  text-shadow: 1px 1px 1px #000,
+  3px 3px 5px grey;
+}
+
+.report_onset {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 86px;
+  line-height: 72px;
+  color: sandybrown;
+  text-align: center;
+  font-weight: 900;
+  text-shadow: 1px 1px 1px #000,
+  3px 3px 5px grey;
+}
+

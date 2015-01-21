@@ -1,175 +1,272 @@
 <div class="center row">
 <div class="col-md-8">
-  <h1>Chronic Pain Manager Report</h1>
+<h1>Chronic Pain Manager Report</h1>
 
-  <h2><%= @user.user_name %></h2><br>
-  <strong><%= @user.email %></strong><br>
-  <span class="label"><strong>User since: <%= @user.created_at.strftime("%d %b %y") %></strong></span><br>
-  Your average pain onset speed <%= @user.pain_onset_trackers.average(:pain_onset_speed) %><br>
-  --------------------------
+<h2><%= @user.user_name %></h2><br>
+<strong><%= @user.email %></strong><br>
+<span class="label"><strong>User since: <%= @user.created_at.strftime("%d %b %y") %></strong></span><br>
+Your average pain onset speed <%= @user.pain_onset_trackers.average(:pain_onset_speed) %><br>
+--------------------------
 
 
-  <% @user.diaries.each do |diary| %>
+<% @user.diaries.each do |diary| %>
 
-      <div class="panel">
+    <div class="panel">
       <div class="panel callout radius">
         <h5><strong>NR: <%= diary.id %> Created at:</strong> <%= diary.created_at.strftime("%d %b %y, %I:%M %p") %></h5>
       </div>
-      <% diary.pain_onset_trackers.each do |pain_onset| %>
-          Pain Onset speed: <%= pain_onset.pain_onset_speed %><br>
-      <% end %>
-      <% diary.pain_triggers.each do |pain_trigger| %>
-          Pain Triggers: <%= pain_trigger.name %><br>
-      <% end %>
-        <% diary.pain_intensity_levels.each do |intensity_level| %>
-            Pain Intensity Level: <%= intensity_level.intensity_level %><br>
+      <div class="row">
+        <% if diary.pain_onset_trackers.any? %>
+            <div class="large-3 columns">
+              <div class="custom-panel">
+               <div class="report_label"> Pain Onset speed</div>
+                <% diary.pain_onset_trackers.each do |pain_onset| %>
+                    <div class="report_onset"><%= pain_onset.pain_onset_speed %></div><i class="fa fa-clock-o big brown"></i><br>
+                <% end %>            </div>
+            </div>
         <% end %>
-        <% diary.pain_descriptions.each do |pain_description| %>
-            Pain Name (description): <%= pain_description.description_name %><br>
-        <% end %>
+        <div class="large-3 columns">
+          <div class="custom-panel">
+            <div class="report_label">Pain Triggers</div>
+            <% diary.pain_triggers.each do |pain_trigger| %>
+                <% pain_trigger.name.each do |name| %>
+                    <strong><%= name %></strong><br>
+
+                <% end %><br>
+            <% end %>          <i class="fa fa-exclamation-triangle big red"></i>  </div>
+        </div>
+        <div class="large-3 columns">
+          <div class="custom-panel">
+            <div class="report_label">Pain Intensity Level</div>
+
+            <% diary.pain_intensity_levels.each do |intensity_level| %>
+                <div class="pain_intensity"><%= intensity_level.intensity_level %></div><i class="fa fa-bolt big red"></i></i>
+
+                <br>
+            <% end %>          </div>
+        </div>
+        <div class="large-3  columns">
+          <div class="custom-panel"><i class="fi-speaker"></i>
+            <div class="report_label">Pain Name (description)</div>
+            <% diary.pain_descriptions.each do |pain_description| %>
+                <strong>  <%= pain_description.description_name %></strong>   <br>
+            <% end %>            </div>
+        </div>
+
       </div>
-  <% end %>
 
+      <div class="row">
 
-
-  =================  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  =================
-  <% if @user.pain_records.any? %>
-      <h3>Painrecords (<%= @user.pain_records.count %>)<br> Average pain level: <%= @user.average_pain  %></h3>
-      <ol class="painrecords">
-        <div class="row">
-
-          <div class="large-6 columns">
-            <div class="panel">
-              <h5>Days with Pain vs Days Without Pain</h5>
-
-              <%= column_chart PainRecord.group(:had_pain_today).count %>
-            </div>
-          </div>
-          <div class="large-6 columns">
-            <div class="panel">
-              <h5>Normal vs Limited activity</h5>
-
-              <%= pie_chart PainRecord.group(:limited_activities).count %>
-            </div>
-          </div>
-
-          </div>
-
-        <div class="row">
-
-          <div class="large-6 columns">
-            <div class="panel">
-              <h5>What activities are affected the most by pain</h5>
-
-              <%= pie_chart PainRecord.group(:limited_activities_name).count %></div>
-          </div>
-          <div class="large-6 columns">
-            <div class="panel">
-              <h5>Your medicine schedule adherence</h5>
-
-              <%= pie_chart PainRecord.group(:all_medicines_taken).count %>
-            </div>
-          </div>
-
-
+        <div class="large-3 columns">
+          <div class="custom-panel">
+            <div class="report_label">Activity Level</div>
+            <% diary.activity_levels.each do |activity| %>
+                <div class="report_activity"><%= activity.act_level %></div><i class="fa fa-smile-o big"></i><br>
+            <% end %>               </div>
         </div>
-        <div class="row">
+        <div class="large-3 columns">
+          <div class="custom-panel">
+            <div class="report_label">Effective Treatments</div>
+            <% diary.effective_treatments.each do |effective_treatment| %>
+                <% effective_treatment.name.each do |name| %>
+                    <strong><%= name %></strong><br>
 
-          <div class="large-6 columns">
-            <div class="panel">
-              <h5> Times when your pain wont go away</h5>
-
-              <%= pie_chart PainRecord.group(:unrelieved_pain).count %>
-            </div>
-          </div>
-          <div class="large-6 columns">
-            <div class="panel">
-              <h5>Your Pain Triggers</h5>
-
-              <%= pie_chart PainRecord.group(:activity_starting_pain_name).count %>
-            </div>
-          </div>
-
-
+                <% end %><br><i class="fa fa-medkit big green"></i></i>
+            <% end %>            </div>
         </div>
-        <div class="row">
-
-          <div class="large-6 columns">
-            <div class="panel">
-              <h5> Your average pain level</h5>
-
-              <%= pie_chart PainRecord.group(:average_pain_level).count %>
+        <% if diary.mental_states.any? %>
+            <div class="large-3 columns">
+              <div class="custom-panel">
+                <div class="report_label">Mental State</div>
+                <div class="panel callout radius">
+                  <% diary.mental_states.each do |state| %>
+                      Disposition:<strong> <%= state.disposition %></strong><br>
+                      Stress Level:<strong> <%= state.stress %></strong><br>
+                      Mood Stability: <strong><%= state.mood_stability %></strong><br>
+                  <% end %>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="large-6 columns">
-            <div class="panel">
-              <h5>have you skipped your medicines</h5>
+        <% end %>
+        <% if diary.other_symptoms.any? %>
+            <div class="large-3 columns">
+              <div class="custom-panel">
+                <div class="report_label">Other Symptoms</div>
+                <% diary.other_symptoms.each do |other_symptom| %>
+                    <% other_symptom.symotom_name.each do |symotom_name| %>
+                        <strong><%= symotom_name %></strong><br>
 
-              <%= pie_chart PainRecord.group(:skipped_medicines).count %>
+                    <% end %><br>
+                <% end %>            </div>
             </div>
+        <% end %>
+
+
+
+      </div>
+      <div class="row">
+
+
+        <% if diary.pain_durations.any? %>
+            <div class="large-3 columns">
+              <div class="custom-panel">
+                <div class="report_label">Pain Duration</div>
+                <p>(the longest is 5 and shortest is 1)</p>
+                <% diary.pain_durations.each do |pain| %>
+                    <div class="report_duration"><%= pain.duration_level %></div>
+                <% end %><br>  </div>
+            </div>
+        <% end %>
+
+
+
+
+      </div>
+
+
+    </div>
+<% end %>
+
+
+
+=================  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  =================
+<% if @user.pain_records.any? %>
+    <h3>Painrecords (<%= @user.pain_records.count %>)<br> Average pain level: <%= @user.average_pain  %></h3>
+    <ol class="painrecords">
+      <div class="row">
+
+        <div class="large-6 columns">
+          <div class="panel">
+            <h5>Days with Pain vs Days Without Pain</h5>
+
+            <%= column_chart PainRecord.group(:had_pain_today).count %>
           </div>
-
-
         </div>
+        <div class="large-6 columns">
+          <div class="panel">
+            <h5>Normal vs Limited activity</h5>
 
-        <div class="row">
-
-          <div class="large-6 columns">
-            <div class="panel">
-              <h5>Your acceptable pain level</h5>
-
-
-              <%= pie_chart PainRecord.group(:acceptable_pain_level).count %>
-            </div>
+            <%= pie_chart PainRecord.group(:limited_activities).count %>
           </div>
-          <div class="large-6 columns">
-            <div class="panel">
-              <h5>What you do to relieve pain</h5>
-
-
-              <%= pie_chart PainRecord.group(:other_actions_to_relieve_pain_name).count %>
-            </div>
-          </div>
-
-
         </div>
 
+      </div>
+
+      <div class="row">
+
+        <div class="large-6 columns">
+          <div class="panel">
+            <h5>What activities are affected the most by pain</h5>
+
+            <%= pie_chart PainRecord.group(:limited_activities_name).count %></div>
+        </div>
+        <div class="large-6 columns">
+          <div class="panel">
+            <h5>Your medicine schedule adherence</h5>
+
+            <%= pie_chart PainRecord.group(:all_medicines_taken).count %>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="row">
+
+        <div class="large-6 columns">
+          <div class="panel">
+            <h5> Times when your pain wont go away</h5>
+
+            <%= pie_chart PainRecord.group(:unrelieved_pain).count %>
+          </div>
+        </div>
+        <div class="large-6 columns">
+          <div class="panel">
+            <h5>Your Pain Triggers</h5>
+
+            <%= pie_chart PainRecord.group(:activity_starting_pain_name).count %>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="row">
+
+        <div class="large-6 columns">
+          <div class="panel">
+            <h5> Your average pain level</h5>
+
+            <%= pie_chart PainRecord.group(:average_pain_level).count %>
+          </div>
+        </div>
+        <div class="large-6 columns">
+          <div class="panel">
+            <h5>have you skipped your medicines</h5>
+
+            <%= pie_chart PainRecord.group(:skipped_medicines).count %>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="row">
+
+        <div class="large-6 columns">
+          <div class="panel">
+            <h5>Your acceptable pain level</h5>
+
+
+            <%= pie_chart PainRecord.group(:acceptable_pain_level).count %>
+          </div>
+        </div>
+        <div class="large-6 columns">
+          <div class="panel">
+            <h5>What you do to relieve pain</h5>
+
+
+            <%= pie_chart PainRecord.group(:other_actions_to_relieve_pain_name).count %>
+          </div>
+        </div>
+
+
+      </div>
 
 
 
 
 
 
-        <!--<table>-->
-          <!--<thead>-->
-          <!--<tr>-->
-            <!--<th width="50">Id</th>-->
-            <!--<th>Date</th>-->
-            <!--<th width="50">Had Pain</th>-->
-            <!--<th width="50">Skipped Activities</th>-->
-            <!--<th width="50">All med.Taken</th>-->
-            <!--<th width="50">Had unrelieved pain</th>-->
-            <!--<th width="50">Unrelieved pain ocured n times</th>-->
-            <!--<th width="50">Activity started pain</th>-->
-            <!--<th width="50">Avg Pain Level</th>-->
-            <!--<th width="50">Other actions to relieve pain</th>-->
-            <!--<th width="50">skipped medicines</th>-->
-            <!--<th width="50">Called doctor because of pain</th>-->
-            <!--<th width="50">Slept all night</th>-->
-            <!--<th width="50">Wake up through night</th>-->
-            <!--<th width="50">Times woken up</th>-->
-            <!--<th width="50">Satisfied with pain mngment</th>-->
-            <!--<th width="50">Acceptable pain level</th>-->
-          <!--</tr>-->
-          <!--</thead>-->
-          <!--<tbody>-->
-          <!--#<%= render @user.pain_records %>-->
-          <!--</tbody>-->
-        <!--</table>-->
 
-      </ol>
-      <%= will_paginate @pain_records %>
-  <% end %>
+      <!--<table>-->
+      <!--<thead>-->
+      <!--<tr>-->
+      <!--<th width="50">Id</th>-->
+      <!--<th>Date</th>-->
+      <!--<th width="50">Had Pain</th>-->
+      <!--<th width="50">Skipped Activities</th>-->
+      <!--<th width="50">All med.Taken</th>-->
+      <!--<th width="50">Had unrelieved pain</th>-->
+      <!--<th width="50">Unrelieved pain ocured n times</th>-->
+      <!--<th width="50">Activity started pain</th>-->
+      <!--<th width="50">Avg Pain Level</th>-->
+      <!--<th width="50">Other actions to relieve pain</th>-->
+      <!--<th width="50">skipped medicines</th>-->
+      <!--<th width="50">Called doctor because of pain</th>-->
+      <!--<th width="50">Slept all night</th>-->
+      <!--<th width="50">Wake up through night</th>-->
+      <!--<th width="50">Times woken up</th>-->
+      <!--<th width="50">Satisfied with pain mngment</th>-->
+      <!--<th width="50">Acceptable pain level</th>-->
+      <!--</tr>-->
+      <!--</thead>-->
+      <!--<tbody>-->
+      <!--#<%= render @user.pain_records %>-->
+      <!--</tbody>-->
+      <!--</table>-->
+
+    </ol>
+    <%= will_paginate @pain_records %>
+<% end %>
 </div>
 <footer class="row">
   <div class="large-12 columns">
@@ -189,4 +286,4 @@
     </div>
   </div>
 </footer>
-    </div>
+</div>

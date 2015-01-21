@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Duration level:</strong>
+  <%= @pain_duration.duration_level %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @pain_duration.user %>
+</p>
+
+<p>
+  <strong>Diary:</strong>
+  <%= @pain_duration.diary %>
+</p>
+
+<%= link_to 'Edit', edit_pain_duration_path(@pain_duration) %> |
+<%= link_to 'Back', pain_durations_path %>
