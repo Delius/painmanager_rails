@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 gem 'thin'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -38,6 +38,8 @@ gem "font-awesome-sass"
 group :development do
   gem 'rails_layout'
 end
+
+gem 'groupdate'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -45,6 +47,7 @@ end
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
@@ -53,5 +56,9 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
 end
 

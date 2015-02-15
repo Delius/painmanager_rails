@@ -8,10 +8,9 @@
 Your average pain onset speed <%= @user.pain_onset_trackers.average(:pain_onset_speed) %><br>
 --------------------------
 
-
 <% @user.diaries.each do |diary| %>
 
-    <div class="panel">
+    <div class="custom-panel">
       <div class="panel callout radius">
         <h5><strong>NR: <%= diary.id %> Created at:</strong> <%= diary.created_at.strftime("%d %b %y, %I:%M %p") %></h5>
       </div>
@@ -19,9 +18,9 @@ Your average pain onset speed <%= @user.pain_onset_trackers.average(:pain_onset_
         <% if diary.pain_onset_trackers.any? %>
             <div class="large-3 columns">
               <div class="custom-panel">
-               <div class="report_label"> Pain Onset speed</div>
+               <div class="report_label"> Pain Onset speed</div><br>
                 <% diary.pain_onset_trackers.each do |pain_onset| %>
-                    <div class="report_onset"><%= pain_onset.pain_onset_speed %></div><i class="fa fa-clock-o big brown"></i><br>
+                    <div class="report_onset"><%= pain_onset.pain_onset_speed %></div><br><i class="fa fa-clock-o big brown"></i><br>
                 <% end %>            </div>
             </div>
         <% end %>
@@ -37,19 +36,19 @@ Your average pain onset speed <%= @user.pain_onset_trackers.average(:pain_onset_
         </div>
         <div class="large-3 columns">
           <div class="custom-panel">
-            <div class="report_label">Pain Intensity Level</div>
+            <div class="report_label">Pain Intensity Level</div><br>
 
             <% diary.pain_intensity_levels.each do |intensity_level| %>
-                <div class="pain_intensity"><%= intensity_level.intensity_level %></div><i class="fa fa-bolt big red"></i></i>
+                <div class="pain_intensity"><%= intensity_level.intensity_level %></div><br><i class="fa fa-bolt big red"></i></i>
 
                 <br>
             <% end %>          </div>
         </div>
         <div class="large-3  columns">
-          <div class="custom-panel"><i class="fi-speaker"></i>
-            <div class="report_label">Pain Name (description)</div>
+          <div class="custom-panel">
+            <div class="report_label">Pain Name (description)</div><br>
             <% diary.pain_descriptions.each do |pain_description| %>
-                <strong>  <%= pain_description.description_name %></strong>   <br>
+                <strong>  <%= link_to pain_description.description_name, pain_descriptions_path %></strong>   <br>
             <% end %>            </div>
         </div>
 
@@ -59,9 +58,9 @@ Your average pain onset speed <%= @user.pain_onset_trackers.average(:pain_onset_
 
         <div class="large-3 columns">
           <div class="custom-panel">
-            <div class="report_label">Activity Level</div>
+            <div class="report_label">Activity Level</div><br>
             <% diary.activity_levels.each do |activity| %>
-                <div class="report_activity"><%= activity.act_level %></div><i class="fa fa-smile-o big"></i><br>
+                <div class="report_activity"><%= activity.act_level %></div><br><i class="fa fa-smile-o big"></i><br>
             <% end %>               </div>
         </div>
         <div class="large-3 columns">
@@ -77,14 +76,14 @@ Your average pain onset speed <%= @user.pain_onset_trackers.average(:pain_onset_
         <% if diary.mental_states.any? %>
             <div class="large-3 columns">
               <div class="custom-panel">
-                <div class="report_label">Mental State</div>
-                <div class="panel callout radius">
+                <div class="report_label">Mental State</div><br>
+
                   <% diary.mental_states.each do |state| %>
                       Disposition:<strong> <%= state.disposition %></strong><br>
                       Stress Level:<strong> <%= state.stress %></strong><br>
                       Mood Stability: <strong><%= state.mood_stability %></strong><br>
                   <% end %>
-                </div>
+
               </div>
             </div>
         <% end %>

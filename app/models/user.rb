@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login ]
   acts_as_taggable_on :pain_records
   has_many :pain_records, dependent: :destroy
+  has_many :pain_intensity_levels, :through => :diaries, dependent: destroy
   has_many :pain_onset_trackers, :through => :diaries, dependent: :destroy
   has_many :pain_triggers, :through => :diaries, dependent: :destroy
   has_many :diaries, -> { order("created_at DESC") }
