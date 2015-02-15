@@ -30,7 +30,7 @@ gem 'momentjs-rails'
 gem 'chartkick'
 gem 'acts-as-taggable-on'
 gem 'simple_form'
-gem 'datetimepicker-rails'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 gem 'foundation-icons-sass-rails'
 gem "font-awesome-sass"
 # Use ActiveModel has_secure_password
