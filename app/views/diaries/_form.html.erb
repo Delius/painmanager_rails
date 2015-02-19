@@ -12,12 +12,12 @@
             <div class="panel">
               <h5>Rate Your Activity Level</h5>
               <%= f.simple_fields_for :activity_levels do |p| %>
-                  <%= p.input :act_level, collection: 1..10, prompt: "Select from  1 (lowest) to 10(highest)" %>
+                  <%= p.input :act_level, :label => "Activity level", collection: 1..10, prompt: "Select from  1 (lowest) to 10(highest)" %>
               <% end %></div>
           </div>
           <div class="large-3 columns">
             <div class="panel">
-              <h5>What best describe your pain? </h5>
+              <h5>What best describes your pain? </h5>
               <%= f.simple_fields_for :pain_descriptions do |p| %>
                   <%= p.input :description_name, :label => "Pain Description(name)", collection: [ "Aching",
                                                                                                    "Stiffness",
@@ -44,7 +44,7 @@
         </div>
           <div class="large-3  columns">
             <div class="panel">
-              <h5>Rat Your Pain Level</h5>
+              <h5>Rate Your Pain Level</h5>
               <%= f.simple_fields_for :pain_intensity_levels do |p| %>
                   <%= p.input :intensity_level, collection: 1..10, prompt: "Select from  1 (lowest) to 10(higest)"  %>
               <% end %>            </div>
@@ -118,7 +118,7 @@
           </div>
           <div class="large-3 columns">
             <div class="panel">
-              <h5>Choose which treatments were wffective</h5>
+              <h5>Choose which treatments were effective</h5>
               <%= f.simple_fields_for :effective_treatments do |p| %>
                   <%= p.input(:name, label: "Choose all that apply (use ctrl key)", collection: [ "Medication",
                                                                                                   "Sitting/Reclinning",
