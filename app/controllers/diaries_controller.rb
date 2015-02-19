@@ -35,7 +35,7 @@ class DiariesController < ApplicationController
     @user = current_user
     @diary = @user.diaries.create(diary_params)
     @diary.save
-    respond_with(@diary)
+    respond_with(@user)
   end
 
   def update
