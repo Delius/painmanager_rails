@@ -15,7 +15,9 @@ gem 'foundation-rails'
 gem 'will_paginate'
 gem 'simple_form'
 gem 'font-awesome-rails'
-
+gem 'highcharts-rails', '~> 3.0.0'
+gem 'pdfkit'
+gem 'wkhtmltopdf-binary'
 group :production do
   gem 'pg'
   gem 'rails_12factor'

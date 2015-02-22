@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login ]
 
   has_many :pain_records, dependent: :destroy
+  has_many :activity_levels, :through => :diaries, dependent: :destroy
   has_many :pain_intensity_levels, :through => :diaries
   has_many :pain_onset_trackers, :through => :diaries, dependent: :destroy
   has_many :pain_triggers, :through => :diaries, dependent: :destroy

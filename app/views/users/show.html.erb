@@ -1,19 +1,155 @@
-<div class="center row">
+<div class="center row" xmlns="http://www.w3.org/1999/html">
 <div class="col-md-8">
 <h1>Chronic Pain Manager Report</h1>
+<div class="row bump">
+  <div class="small-12 large-6 columns">
+    <div class="row">
+      <div class="profile-card">
 
-<h2><%= @user.user_name %></h2><br>
-<strong><%= @user.email %></strong><br>
-<span class="label"><strong>User since: <%= @user.created_at.strftime("%d %b %y") %></strong></span><br>
-Your average pain onset speed <%= @user.pain_onset_trackers.average(:pain_onset_speed) %><br>
---------------------------
+        <div class="small-12 large-8 columns">
+          <h4><%= @user.user_name %></span></h4>
+          <p><i class="fi-mail"></i><span> <%= @user.email %></span></p>
 
+        </div>
+        <div class="row collapse">
+          <ul class="button-group even-3">
+            <li><a href="#" class="button"> User since: <span><h5><%= @user.created_at.strftime("%d %b %y") %> </h5></span></a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            new Highcharts.Chart({
+                chart: {
+                    renderTo: "pain_level",
+
+                },
+                title: {
+                    text:"Pain Level by Day"
+                },
+                xAxis: {
+                    type: "datetime"
+                },
+                yAxis: {
+                    title: {
+                        text: "Pain level"
+                    }
+                },
+                tooltip: {
+                    formatter: function() {
+                        return Highcharts.dateFormat("%B %e, %Y", this.x) + ': ' +
+                                "P Level " + Highcharts.numberFormat((this.y))
+
+                    }
+                },
+
+
+
+
+
+                series: [
+                    {
+                        name: "Pain Levels",
+                        pointInterval: <%= 1.day*1000 %>,
+                        pointStart: <%= (3.weeks.ago.to_i*1000) %>,
+                        data: <%= (3.weeks.ago.to_date..Date.today).map {
+                    |date| @user.pain_intensity_levels.total_on(date)
+                    }.inspect %>
+                    },{
+                        name: "Average Pain Level",
+                        pointInterval: <%= 1.day*1000 %>,
+                        pointStart: <%= (3.weeks.ago.to_i*1000) %>,
+                        data: <%= (3.weeks.ago.to_date..Date.today).map {
+                    |date| @user.pain_intensity_levels.average_on(date)
+                    }.inspect %>
+
+
+                }]
+            });
+        });
+
+</script>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        new Highcharts.Chart({
+            chart: {
+                renderTo: "activity_level",
+
+            },
+            title: {
+                text:"Activity Level By Day"
+            },
+            xAxis: {
+                type: "datetime"
+            },
+            yAxis: {
+                title: {
+                    text: "Activity level"
+                }
+            },
+            tooltip: {
+                formatter: function() {
+                    return Highcharts.dateFormat("%B %e, %Y", this.x) + ': ' +
+                            "P Level " + Highcharts.numberFormat((this.y))
+
+                }
+            },
+
+
+
+
+
+            series: [
+                {
+                    name: "Activity Levels",
+                    pointInterval: <%= 1.day*1000 %>,
+                    pointStart: <%= (3.weeks.ago.to_i*1000) %>,
+                    data: <%= (3.weeks.ago.to_date..Date.today).map {
+                    |date| @user.activity_levels.total_on(date)
+                    }.inspect %>
+                },{
+                    name: "Average Activity Level",
+                    pointInterval: <%= 1.day*1000 %>,
+                    pointStart: <%= (3.weeks.ago.to_i*1000) %>,
+                    data: <%= (3.weeks.ago.to_date..Date.today).map {
+                    |date| @user.activity_levels.average_on(date)
+                    }.inspect %>
+
+
+                }]
+        });
+    });
+
+</script>
+
+<div class="custom-panel">
+<div class="row">
+  <div class="large-6 columns">
+    <div class="center row">
+    <div id="pain_level" style="width:300px;height:200px"></div>
+  </div>
+  </div>
+  <div class="large-6 columns">
+    <div id="activity_level" style="width:350px;height:200px"></div>
+  </div>
+</div>
+</div>
 <% @user.diaries.each do |diary| %>
 
     <div class="custom-panel">
+
       <div class="panel callout radius">
         <h5><strong>NR: <%= diary.id %> Created at:</strong> <%= diary.created_at.strftime("%d %b %y, %I:%M %p") %></h5>
+        <%= link_to 'Download Report', diaries_path(format: 'pdf') %>
       </div>
+
       <div class="row">
         <% if diary.pain_onset_trackers.any? %>
             <div class="large-3 columns">
@@ -127,8 +263,6 @@ Your average pain onset speed <%= @user.pain_onset_trackers.average(:pain_onset_
 <% end %>
 
 
-
-=================  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  =================
 <% if @user.pain_records.any? %>
     <h3>Painrecords (<%= @user.pain_records.count %>)<br> Average pain level: <%= @user.average_pain  %></h3>
     <ol class="painrecords">
@@ -272,16 +406,16 @@ Your average pain onset speed <%= @user.pain_onset_trackers.average(:pain_onset_
     <hr />
     <div class="row">
       <div class="large-6 columns">
-        <p>&copy; Copyright no one at all. Go to town.</p>
+        <p>&copy; Fibrotrust.</p>
       </div>
-      <div class="large-6 columns">
-        <ul class="inline-list right">
-          <li><a href="#">Section 1</a></li>
-          <li><a href="#">Section 2</a></li>
-          <li><a href="#">Section 3</a></li>
-          <li><a href="#">Section 4</a></li>
-        </ul>
-      </div>
+      <!--<div class="large-6 columns">-->
+        <!--<ul class="inline-list right">-->
+          <!--<li><a href="#">Section 1</a></li>-->
+          <!--<li><a href="#">Section 2</a></li>-->
+          <!--<li><a href="#">Section 3</a></li>-->
+          <!--<li><a href="#">Section 4</a></li>-->
+        <!--</ul>-->
+      <!--</div>-->
     </div>
   </div>
 </footer>
