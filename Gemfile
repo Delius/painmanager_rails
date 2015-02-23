@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+@ruby_version
 
 gem 'rails', '4.2.0'
 gem 'thin'
@@ -17,7 +17,7 @@ gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'highcharts-rails', '~> 3.0.0'
 gem 'pdfkit'
-gem 'wkhtmltopdf-binary'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
