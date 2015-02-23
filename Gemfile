@@ -16,7 +16,7 @@ gem 'will_paginate'
 gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'highcharts-rails', '~> 3.0.0'
-gem 'pdfkit'
+
 
 group :production do
   gem 'pg'
