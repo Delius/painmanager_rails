@@ -10,3 +10,11 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css.scss, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( highcharts.js )
+
+ActionController::Base.asset_host = Proc.new { |source, request|
+  if request.env["REQUEST_PATH"].include? ".pdf"
+    "file://#{Rails.root.join('public')}"
+  else
+    "#{request.protocol}#{request.host_with_port}"
+  end
+}
