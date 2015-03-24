@@ -22,6 +22,12 @@ RUN wget -O chruby-0.3.9.tar.gz https://github.com/postmodern/chruby/archive/v0.
 
 RUN rm -rf /var/cache/apt/* /tmp/*
 
+#setting up a ssh key to clone private repo from github
+RUN mkdir -p /root/.ssh
+ADD url_for_rsa /root/.ssh/id_rsa
+RUN chmod 700 /root/.ssh/id_rsa
+RUN echo "Host github.com\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config
+
 
 RUN useradd -m -G sudo app
 
