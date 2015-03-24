@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
 
+
+  def index
+    @users = User.all
+
+  end
+
   def show
     @user = User.find(params[:id])
     @pain_records = @user.pain_records.paginate(page: params[:page])
@@ -15,7 +21,8 @@ class UsersController < ApplicationController
     format.pdf do
 
       render :pdf => "Pain_Records_for_#{@user.user_name}_created_at_#{@user.created_at.strftime("%d/%m/%Y")}.pdf",
-             :template => 'users/show.html.erb'
+             :template => 'users/show.html.erb',
+             :show_as_html => params[:debug].present?
 
 end
   end

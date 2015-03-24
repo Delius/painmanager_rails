@@ -6,21 +6,19 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>User</th>
-      <th>Diary</th>
-      <th colspan="3"></th>
+
     </tr>
   </thead>
 
   <tbody>
     <% @effective_treatments.each do |effective_treatment| %>
       <tr>
-        <td><%= effective_treatment.name %></td>
-        <td><%= effective_treatment.user %></td>
-        <td><%= effective_treatment.diary %></td>
-        <td><%= link_to 'Show', effective_treatment %></td>
-        <td><%= link_to 'Edit', edit_effective_treatment_path(effective_treatment) %></td>
-        <td><%= link_to 'Destroy', effective_treatment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><% effective_treatment.name.each do |name|%>
+              <%= name %>
+              <% end %>
+
+              </td>
+
       </tr>
     <% end %>
   </tbody>
