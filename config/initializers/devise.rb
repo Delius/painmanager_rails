@@ -37,7 +37,7 @@ Devise.setup do |config|
   # if you set :request_keys to [:subdomain], :subdomain will be used on authentication.
   # The same considerations mentioned for authentication_keys also apply to request_keys.
   # config.request_keys = []
-
+  config.secret_key = 'dfe3f65e70dc9f770ed955227c76be57e7fa0d803759caf85258342c4bbde9c0eac4270f52f8f7534fea8e924cdfa79703909e9f2a5df17551db06517bad50cb'
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
@@ -49,7 +49,7 @@ Devise.setup do |config|
   config.strip_whitespace_keys = [ :user_name, :email ]
 
   # Tell if authentication through request.params is enabled. True by default.
-  # It can be set to an array that will enable params authentication only for the
+  # It can be set to an array that wigit addll enable params authentication only for the
   # given strategies, for example, `config.params_authenticatable = [:database]` will
   # enable it only for database (email + password) authentication.
   # config.params_authenticatable = true
