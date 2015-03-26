@@ -22,7 +22,7 @@ test:
 
 production:
   adapter: postgresql
-  user: app
+  user: app_user
   password: password
   db: app_database
   pool: 5
