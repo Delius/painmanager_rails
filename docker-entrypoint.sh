@@ -18,4 +18,6 @@ if [[ $? != 0 ]]; then
   bundle exec rake db:migrate
 fi
 
-bundle exec rails server
+export SECRET_KEY_BASE=$(rake secret)
+
+bundle exec rails server -b 0.0.0.0
