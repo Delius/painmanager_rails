@@ -18,6 +18,13 @@ if [[ $? != 0 ]]; then
   bundle exec rake db:migrate
 fi
 
-export SECRET_KEY_BASE=$(rake secret)SD
+export SECRET_KEY_BASE=$(rake secret)
 
-bundle exec rails server -b 0.0.0.0
+sudo rm /etc/nginx/sites-enabled/*
+sudo ln -s /home/app/nginx.conf /etc/nginx/sites-enabled/app.conf
+
+sudo service nginx start
+
+bundle exec rake assets:precompile
+
+bundle exec thin -e production -b unix:///home/app/thin.sock

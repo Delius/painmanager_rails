@@ -46,10 +46,10 @@ RUN rm -rf /home/app/src
 
 ADD docker-entrypoint.sh /home/app/docker-entrypoint.sh
 ADD setup.sh /home/app/setup.sh
-
+ADD nginx.conf /home/app/nginx.conf
 
 ENV RAILS_ENV=production
 
-EXPOSE 3000:3000
+EXPOSE 85:80
 
 ENTRYPOINT /home/app/docker-entrypoint.sh
